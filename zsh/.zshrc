@@ -1,0 +1,88 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+  export ZSH="/home/hemul/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+
+ZSH_THEME="mh"
+
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  git
+  vi-mode
+  sudo
+  zsh-autosuggestions
+  z
+  zshmarks
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+ if [[ -n $SSH_CONNECTION ]]; then
+   export EDITOR='vim'
+ else
+   export EDITOR='vim'
+ fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+alias tk='tmux kill-server'
+alias tm='tmux attach'
+alias tl='tmux list-sessions'
+
+
+alias l='ls -lFh'
+alias la='ls -lAFh'
+alias lr='ls -lRAFh'
+alias lt='ls -ltFh'
+alias ll='ls -l'
+alias ld='ls -ld .*'
+
+alias h='history'
+
+bindkey '^ ' autosuggest-accept
+
+# No beeps
+unsetopt beep
+
+# Dont bacground tasks for WSL
+case $(uname -a) in
+	   *Microsoft*) unsetopt BG_NICE ;;
+esac
+
+# Keeagent
+export SSH_AUTH_SOCK="/tmp/.ssh-auth-sock"
+~/bin/msysgit2unix-socket.py /mnt/c/SSH\ integration/syslockfile:$SSH_AUTH_SOCK 2>/dev/null
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+[ -e ~/.dircolors ] && eval $(dircolors -b ~/.dircolors) || 
+	    eval $(dircolors -b)
