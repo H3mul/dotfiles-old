@@ -1,7 +1,9 @@
 #!/bin/bash
 
 #install zsh
-sudo apt-get install zsh -y && chsh -s /bin/zsh
+if [ ! -f /bin/zsh ]; then 
+	sudo apt-get install zsh -y
+fi
 
 #install oh-my-zsh if not already installed
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
