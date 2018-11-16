@@ -15,8 +15,23 @@ if [ ! -d "$HOME/.oh-my-zsh" ]; then
 	sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 fi
 
+
 #install custom oh-my-zsh plugins if not already installed
-if [ ! -d  ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions ]; then
-	git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+autosuggestions_home=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions 
+
+if [ ! -d  $autosuggestions_home ]; then
+	git clone https://github.com/zsh-users/zsh-autosuggestions $autosuggestions_home 
+fi
+
+
+syntax_highlighting_home=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+if [ ! -d $syntax_highlighting_home ]; then
+	git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $syntax_highlighting_home 
+
+	chmod g-w $syntax_highlighting_home -R 
+	chmod o-w $syntax_highlighting_home -R 
+
 fi
 
