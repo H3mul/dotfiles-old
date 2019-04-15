@@ -1,3 +1,5 @@
+source .aliases
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -16,11 +18,9 @@ ZSH_THEME="mh"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
-  vi-mode
   sudo
   zsh-autosuggestions
   z
-  zshmarks
   zsh-syntax-highlighting
 )
 
@@ -55,35 +55,15 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-alias tk='tmux kill-server'
-alias tm='tmux attach'
-alias tl='tmux list-sessions'
-
-
-alias l='ls -lFh'
-alias la='ls -lAFh'
-alias lr='ls -lRAFh'
-alias lt='ls -ltFh'
-alias ll='ls -l'
-alias ld='ls -ld .*'
-
-alias h='history'
-
-bindkey '^ ' autosuggest-accept
 
 # No beeps
 unsetopt beep
+xset b off
+xset b 0 0 0
 
 # Dont bacground tasks for WSL
 case $(uname -a) in
 	   *Microsoft*) unsetopt BG_NICE ;;
 esac
 
-# Keeagent
-export SSH_AUTH_SOCK="/tmp/.ssh-auth-sock"
-~/bin/msysgit2unix-socket.py /mnt/c/SSH\ integration/syslockfile:$SSH_AUTH_SOCK 2>/dev/null
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-[ -e ~/.dircolors ] && eval $(dircolors -b ~/.dircolors) || 
-	    eval $(dircolors -b)
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"

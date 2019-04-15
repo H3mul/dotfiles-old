@@ -10,31 +10,7 @@ call plug#begin()
 " plugin manager
 Plug 'junegunn/vim-plug'
 
-" fuzzy finder
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
-" tree file view
-Plug 'scrooloose/nerdtree'
-"Plug 'Xuyuanp/nerdtree-git-plugin'
-
-" gutter git
-Plug 'airblade/vim-gitgutter'
-
-" seamless vim - tmux pane switching
-Plug 'christoomey/vim-tmux-navigator'
-
-" display buffers on top
-Plug 'ap/vim-buftabline'
-
-" surround elements
-Plug 'tpope/vim-surround'
-
-" onehalf color theme
-"Plug 'sonph/onehalf', {'rtp': 'vim/'}
-
 " themes
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'rakr/vim-one'
 
 Plug 'jceb/vim-orgmode'
@@ -100,10 +76,10 @@ nnoremap <c-P> :Files <CR>
 
 
 " New line without insert
-nnoremap o o<Esc>
-nnoremap O O<Esc>
+" nnoremap o o<Esc>
+" nnoremap O O<Esc>
 
-
-" COLORS
-colorscheme PaperColor
 set background=dark
+set mouse=a
+
+source ~/.dev_vimrc
