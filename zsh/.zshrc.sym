@@ -61,9 +61,7 @@ unsetopt beep
 xset b off
 xset b 0 0 0
 
-# Dont bacground tasks for WSL
-case $(uname -a) in
-	   *Microsoft*) unsetopt BG_NICE ;;
-esac
-
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
+
+setopt no_share_history
+unsetopt share_history

@@ -21,65 +21,116 @@ call plug#end()
 " ========
 " SETTINGS
 
-" open NERTTree
-let NERDTreeShowHidden=1
-
-
-" close nerttree if files are closed
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
-highlight clear LineNr
-
-" switch window buffers
-let c = 1
-while c <= 99
-	execute "nnoremap " . c . "gb :" . c . "b\<CR>"	
-	let c += 1
-endwhile
-
-
-" set linenumbers
-set number
-set rnu 
-
-
-" turn off annoying asshole bell
-set visualbell
-
+" set number
+" set rnu 
 
 " turn off auto commenting
 autocmd BufRead,BufNewFile * set formatoptions-=o
 
+set mouse=a
+set ignorecase
 
-" set search highlighting
-set hls
-" clear search
-nnoremap <silent> <space> :noh<CR>
+" Window management
+map <F10> <C-W>=
+imap <F10> <C-O><C-W>=
+map <F11> <C-W>-
+imap <F11> <C-O><C-W>-
+map <F12> <C-W>+
+imap <F12> <C-O><C-W>+
+map <S-F11> :res 1<CR>
+imap <S-F11> <C-O>:res 1<CR>
+map <S-F12> <C-W>_
+imap <S-F12> <C-O><C-W>_
+map <S-Up> <C-W><Up>
+imap <S-Up> <C-O><C-W><Up>
+map <S-Down> <C-W><Down>
+imap <S-Down> <C-O><C-W><Down>
+map <S-Left> <C-W><Left>
+imap <S-Left> <C-O><C-W><Left>
+map <S-Right> <C-W><Right>
+imap <S-Right> <C-O><C-W><Right>
 
+" Toggle search highlighting
+map <F5> :set hlsearch!<Bar>set hlsearch?<CR>
 
-" NerdTree Settings
-map <C-t> :NERDTreeToggle<CR>
-let g:NERDTreeMapJumpPrevSibling=""
-let g:NERDTreeMapJumpNextSibling=""
+" Toggle paste
+set pastetoggle=<F6>
+map <F6> :set paste!<CR>i
+imap <F6> <C-O>:set paste!<CR>
 
+" Turn on syntax highlighting if it's supported
+if has('syntax') && &t_Co > 2
+    syntax on
+endif
 
-" <c-h> is interpreted as <bs> in neovim
-" This is a bandaid fix until the team decides how
-" they want to handle fixing it...(https://github.com/neovim/neovim/issues/2048)
-nnoremap <silent> <bs> :TmuxNavigateLeft<cr>
+if has('autocmd')
+    filetype plugin indent on
 
+" Jump to the last known cursor position when editing a file.
+    autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif
 
-" Fuzzy File Finder
-let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
-nnoremap <c-p> :Files <CR>
-nnoremap <c-P> :Files <CR>
+" Change the indent amount for css and javascript files
+    au FileType css set shiftwidth=2
+    au FileType js set shiftwidth=4
+endif
 
+" vi mode - yuck!
+set nocompatible
 
-" New line without insert
-" nnoremap o o<Esc>
-" nnoremap O O<Esc>
+" Copy indent from current line when starting a new line
+set autoindent
+" Automatically indent new lines after certain characters
+set smartindent
+" Expand tabs into spaces
+set expandtab
+" Handle expanded tab spaces
+set smarttab
+" Use a 4 space tab
+set shiftwidth=4
+" Number of spaces a <Tab> is displayed as
+set tabstop=8
+
+" Make backspace work 'normally' in Insert mode
+set backspace=indent,eol,start
+
+" Turn off search highlighting
+set nohlsearch
+" Go to match as they are found when typed
+set incsearch
+" Show incomplete commands
+set showcmd
+" Parse files for vim line
+set modeline
 
 set background=dark
-set mouse=a
+" Increase the command-line height to avoid hit-enter prompts
+set cmdheight=2
+" Always show the status line
+set laststatus=2
+" Change the default status line format
+set statusline=%<%f%(\ %h%m%r%)%a%=%b\ 0x%B\ \ %l,%c%V\ %P
 
-source ~/.dev_vimrc
+" list mode
+set list
+set listchars=tab:>-,precedes:<,extends:>
+" String to put at the start of lines that have been wrapped
+"set showbreak=>
+" Don't display text as wrapped
+set nowrap
+
+" Select All
+map <C-A> :norm ggVG<CR>
+
+" Comment/uncomment
+vmap ,c :s/^/#/<CR>
+vmap ,u :s/^\(\s*\)#/\1/<CR>
+
+" vim won't set the title of the terminal window unless $DISPLAY and $WINDOWID
+" are set.  If bash's $PROMPT_COMMAND is set, then the title can be safely
+" set.
+if &term =~ "rxvt.*" || &term =~ "xterm.*"
+    if exists("$PROMPT_COMMAND")
+        set title
+        set t_ts=]0;
+    endif
+endif
