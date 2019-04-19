@@ -64,4 +64,3 @@ xset b 0 0 0
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
 setopt no_share_history
-unsetopt share_history
