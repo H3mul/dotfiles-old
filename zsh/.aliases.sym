@@ -8,10 +8,6 @@ alias ld='ls -ld .*'
 
 alias h='history'
 
-alias ssh-dev='ssh phillip@metrixdev1.nmsrv.com'
-alias ssh-dev-har='ssh-dev -t "cd site/static/har/src/harviewer/webapp/; bash --login"'
-alias ssh-dev-lib='ssh-dev -t "cd site/lib; bash --login"'
-
 alias git-pull="git pull --rebase --autostash"
 alias git-ls="git log --oneline --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)'"
 alias git-la="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
@@ -19,3 +15,7 @@ alias git-la="git log --graph --abbrev-commit --decorate --format=format:'%C(bol
 calc () {
     echo "scale=3; $@" | bc
 }
+
+if [[ -f ~/.local_aliases ]]; then
+    source ~/.local_aliases
+fi

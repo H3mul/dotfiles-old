@@ -37,18 +37,18 @@ map <F11> <C-W>-
 imap <F11> <C-O><C-W>-
 map <F12> <C-W>+
 imap <F12> <C-O><C-W>+
-map <S-F11> :res 1<CR>
-imap <S-F11> <C-O>:res 1<CR>
-map <S-F12> <C-W>_
-imap <S-F12> <C-O><C-W>_
-map <S-Up> <C-W><Up>
-imap <S-Up> <C-O><C-W><Up>
-map <S-Down> <C-W><Down>
-imap <S-Down> <C-O><C-W><Down>
-map <S-Left> <C-W><Left>
-imap <S-Left> <C-O><C-W><Left>
-map <S-Right> <C-W><Right>
-imap <S-Right> <C-O><C-W><Right>
+map <C-F11> :res 1<CR>
+imap <C-F11> <C-O>:res 1<CR>
+map <C-F12> <C-W>_
+imap <C-F12> <C-O><C-W>_
+map <C-Up> <C-W><Up>
+imap <C-Up> <C-O><C-W><Up>
+map <C-Down> <C-W><Down>
+imap <C-Down> <C-O><C-W><Down>
+map <C-Left> <C-W><Left>
+imap <C-Left> <C-O><C-W><Left>
+map <C-Right> <C-W><Right>
+imap <C-Right> <C-O><C-W><Right>
 
 " Toggle search highlighting
 map <F5> :set hlsearch!<Bar>set hlsearch?<CR>
