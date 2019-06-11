@@ -15,6 +15,8 @@ Plug 'rakr/vim-one'
 
 Plug 'jceb/vim-orgmode'
 
+Plug 'ciaranm/securemodelines'
+
 call plug#end()
 
 
@@ -23,6 +25,18 @@ call plug#end()
 
 " set number
 " set rnu 
+
+let g:secure_modelines_allowed_items = [
+                \ "textwidth",   "tw",
+                \ "softtabstop", "sts",
+                \ "tabstop",     "ts",
+                \ "shiftwidth",  "sw",
+                \ "expandtab",   "et",   "noexpandtab", "noet",
+                \ "filetype",    "ft",
+                \ "foldmethod",  "fdm",
+                \ "readonly",    "ro",   "noreadonly", "noro",
+                \ "rightleft",   "rl",   "norightleft", "norl"
+                \ ]
 
 " turn off auto commenting
 autocmd BufRead,BufNewFile * set formatoptions-=o
