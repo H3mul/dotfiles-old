@@ -33,7 +33,8 @@ discordMessage "Monitoring PBE..."
 
 last_status=-1;
 while true; do
-    ping_json_cmd=`curl -s https://status.pbe.leagueoflegends.com/shards/pbe | jq ".services| .[0] | .status"`
+    ping_json_cmd=`curl -s https://status.pbe.leagueoflegends.com/shards/pbe | jq '.services | .[] | select(.name | . and contains("Game")) | .status'`
+
     echo \[$(date +%H:%M:%S)\] Current Status: $ping_json_cmd
 
     [[ "$ping_json_cmd" = "\"online\"" ]] && new_status=1 || new_status=0
