@@ -22,6 +22,7 @@ if [[ -z "$webhook" ]]; then
     exit
 fi
 
+
 # ===========================
 # HELPER FUNCS
 
@@ -47,7 +48,13 @@ echo "listening to status... "
 last_status=-1
 old_data=""
 while true; do
-    ping_json=`curl -s $league_status_url`
+
+    # Check internet connectivity
+    if ! ping -c 1 google.com > /dev/null; then
+        continue
+    fi
+
+    ping_json=`curl -s $league_status_url 2>/dev/null`
     game_data=`echo "$ping_json" | jq '.services | .[] | select(.slug | . and contains("game"))'`
     game_status=`echo "$game_data" | jq '.status'`
 
