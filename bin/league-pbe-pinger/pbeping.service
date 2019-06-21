@@ -1,10 +1,9 @@
 [Unit]
-Description=Ping League PBE server and send discord messages when state changes
+Description=League PBE Status Pinger
 After=network.target
 
 [Service]
 Type=simple
-User=hemul
 WorkingDirectory=/home/hemul/dotfiles/bin/league-pbe-pinger
 ExecStart=/home/hemul/dotfiles/bin/league-pbe-pinger/pbeping.sh
 Restart=on-failure

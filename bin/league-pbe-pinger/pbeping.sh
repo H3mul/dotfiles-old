@@ -26,13 +26,13 @@ fi
 # HELPER FUNCS
 
 discordMessage () {
-    #curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"$1\"}" $webhook
+    curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"$1\"}" $webhook
     echo "Sending Discord message: $1"
 }
 
 cleanup () {
     echo "stopped listening..."
-    discordMessage "Stopped monitoring PBE."
+    #discordMessage "Stopped monitoring PBE."
     exit
 }
 
@@ -42,7 +42,7 @@ cleanup () {
 trap cleanup INT
 
 echo "listening to status... "
-discordMessage "Monitoring PBE..."
+#discordMessage "Monitoring PBE..."
 
 last_status=-1
 old_data=""
