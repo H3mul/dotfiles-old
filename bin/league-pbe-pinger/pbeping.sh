@@ -5,6 +5,21 @@ webhook_conf="../discord_webhook.conf"
 league_status_url="https://status.pbe.leagueoflegends.com/shards/pbe"
 
 # ===========================
+# GET ARGUMENTS
+
+silent=0
+if [ $# -gt 0 ];then
+    if [ "$1" = "-q" ];then
+        silent=1
+    fi
+
+    if [ "$1" = "-h" ];then
+        echo "Usage: -q to suppress discord messages"
+        exit
+    fi
+fi
+
+# ===========================
 # GET WEBHOOK URL
 
 my_dir="$(dirname "$0")"
@@ -27,8 +42,10 @@ fi
 # HELPER FUNCS
 
 discordMessage () {
-    curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"$1\"}" $webhook
-    echo "Sending Discord message: $1"
+    if [ $silent -eq 0 ]; then
+        curl -H "Content-Type: application/json" -X POST -d "{\"content\": \"$1\"}" $webhook
+        echo "Sending Discord message: $1"
+    fi
 }
 
 cleanup () {
@@ -46,12 +63,22 @@ echo "listening to status... "
 #discordMessage "Monitoring PBE..."
 
 last_status=-1
+inet=1
 old_data=""
 while true; do
 
     # Check internet connectivity
-    if ! ping -c 1 google.com > /dev/null; then
+    if ! ping -c 1 google.com > /dev/null 2>/dev/null; then
+        if [ $inet -gt 0 ]; then
+            echo Disconnected from internet
+            inet=0
+        fi
         continue
+    else
+        if [ $inet -eq 0 ]; then
+            echo Reconnected to internet
+            inet=1
+        fi
     fi
 
     ping_json=`curl -s $league_status_url 2>/dev/null`
