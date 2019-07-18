@@ -2,24 +2,6 @@
 
 cd "$(dirname "$0")"
 
-while getopts "i" opt; do
-        case $opt in
-                i)
-                        echo "installing prerequisites..."
-
-                        #install zsh
-                        if [ ! -f /bin/zsh ]; then 
-                                sudo apt-get install zsh -y
-                        fi
-
-                        #install ag
-                        if [ ! -f /usr/bin/ag ]; then 
-                                sudo apt-get install silversearcher-ag -y
-                        fi
-                        ;;      
-        esac
-done
-
 #install oh-my-zsh if not already installed
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
         echo "installing oh-my-zsh..."

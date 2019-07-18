@@ -58,8 +58,8 @@ source $ZSH/oh-my-zsh.sh
 
 # No beeps
 unsetopt beep
-xset b off
-xset b 0 0 0
+#xset b off
+#xset b 0 0 0
 
 #
 # NPM global install to local user
