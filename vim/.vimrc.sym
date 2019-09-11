@@ -148,3 +148,14 @@ if &term =~ "rxvt.*" || &term =~ "xterm.*"
         set t_ts=]0;
     endif
 endif
+
+
+" Netrw Settings:
+
+" set tree view
+let g:netrw_liststyle = 3
+
+" remove info banner
+let g:netrw_banner = 0
+
+set autochdir
