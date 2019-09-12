@@ -63,6 +63,14 @@ map <C-Left> <C-W><Left>
 imap <C-Left> <C-O><C-W><Left>
 map <C-Right> <C-W><Right>
 imap <C-Right> <C-O><C-W><Right>
+map <C-K> <C-W><Up>
+imap <C-K> <C-O><C-W><Up>
+map <C-J> <C-W><Down>
+imap <C-J> <C-O><C-W><Down>
+map <C-H> <C-W><Left>
+imap <C-H> <C-O><C-W><Left>
+map <C-L> <C-W><Right>
+imap <C-L> <C-O><C-W><Right>
 
 " Toggle search highlighting
 map <F5> :set hlsearch!<Bar>set hlsearch?<CR>
@@ -159,3 +167,5 @@ let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 
 set autochdir
+
+set noequalalways
