@@ -19,7 +19,8 @@ grepr() {
 }
 
 calc () {
-    python -c 'print($@)'
+    cmd="print($@)"
+    python -c $cmd
 }
 
 ds () {
