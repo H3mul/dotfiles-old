@@ -887,7 +887,7 @@ Uuid={c94fa037-ae85-48d7-81af-7d870cd2df46}
 
 [Data_4]
 Comment=Comment
-DataCount=6
+DataCount=5
 Enabled=true
 Name=Global Shortcuts
 SystemGroup=0
@@ -926,14 +926,14 @@ Uuid={74629e09-4731-4026-9e6f-164a47578f78}
 [Data_4_2]
 Comment=Comment
 Enabled=true
-Name=Open Dolphin
+Name=Open Vim
 Type=SIMPLE_ACTION_DATA
 
 [Data_4_2Actions]
 ActionsCount=1
 
 [Data_4_2Actions0]
-CommandURL=dolphin
+CommandURL=vim
 Type=COMMAND_URL
 
 [Data_4_2Conditions]
@@ -945,21 +945,21 @@ Comment=Simple_action
 TriggersCount=1
 
 [Data_4_2Triggers0]
-Key=Meta+E
+Key=Meta+V
 Type=SHORTCUT
-Uuid={f7474a0d-8037-4df5-98b6-93a42dab71b8}
+Uuid={dedf90c6-12c9-4573-a2ca-393191daa6dd}
 
 [Data_4_3]
 Comment=Comment
 Enabled=true
-Name=Open Vim
+Name=Open Firefox
 Type=SIMPLE_ACTION_DATA
 
 [Data_4_3Actions]
 ActionsCount=1
 
 [Data_4_3Actions0]
-CommandURL=vim
+CommandURL=firefox
 Type=COMMAND_URL
 
 [Data_4_3Conditions]
@@ -971,21 +971,21 @@ Comment=Simple_action
 TriggersCount=1
 
 [Data_4_3Triggers0]
-Key=Meta+V
+Key=Meta+F
 Type=SHORTCUT
-Uuid={dedf90c6-12c9-4573-a2ca-393191daa6dd}
+Uuid={723db867-29ec-4933-b185-efd48b5d8e33}
 
 [Data_4_4]
 Comment=Comment
 Enabled=true
-Name=Open Firefox
+Name=Restart Plasma
 Type=SIMPLE_ACTION_DATA
 
 [Data_4_4Actions]
 ActionsCount=1
 
 [Data_4_4Actions0]
-CommandURL=firefox
+CommandURL=~/dotfiles/bin/restart_plasma.sh
 Type=COMMAND_URL
 
 [Data_4_4Conditions]
@@ -997,21 +997,21 @@ Comment=Simple_action
 TriggersCount=1
 
 [Data_4_4Triggers0]
-Key=Meta+F
+Key=Ctrl+Alt+Shift+P
 Type=SHORTCUT
-Uuid={723db867-29ec-4933-b185-efd48b5d8e33}
+Uuid={0ab17cb1-b66e-4c69-b95b-cae70279d1db}
 
 [Data_4_5]
 Comment=Comment
 Enabled=true
-Name=Restart Plasma
+Name=Open Chrome
 Type=SIMPLE_ACTION_DATA
 
 [Data_4_5Actions]
 ActionsCount=1
 
 [Data_4_5Actions0]
-CommandURL=~/dotfiles/bin/restart_plasma.sh
+CommandURL=chromium
 Type=COMMAND_URL
 
 [Data_4_5Conditions]
@@ -1023,32 +1023,6 @@ Comment=Simple_action
 TriggersCount=1
 
 [Data_4_5Triggers0]
-Key=Ctrl+Alt+Shift+P
-Type=SHORTCUT
-Uuid={0ab17cb1-b66e-4c69-b95b-cae70279d1db}
-
-[Data_4_6]
-Comment=Comment
-Enabled=true
-Name=Open Chrome
-Type=SIMPLE_ACTION_DATA
-
-[Data_4_6Actions]
-ActionsCount=1
-
-[Data_4_6Actions0]
-CommandURL=chromium
-Type=COMMAND_URL
-
-[Data_4_6Conditions]
-Comment=
-ConditionsCount=0
-
-[Data_4_6Triggers]
-Comment=Simple_action
-TriggersCount=1
-
-[Data_4_6Triggers0]
 Key=Meta+C
 Type=SHORTCUT
 Uuid={a4fabe6e-1b83-43fb-8648-b17779bdaae5}
