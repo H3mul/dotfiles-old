@@ -6,17 +6,20 @@ cd "$(dirname "$0")"
 cli=(
     zsh
     vim
+    git
 )
 
 plasma=(
     konsole
     dolphin
+    plasma-colors
+    plasma-globals
 )
 
 full=("${cli[@]} ${plasma[@]}")
 
 for item in ${full[@]}; do
-    stow -R -t "${HOME}" $item 2>/dev/null && echo "[+] Symlinks deployed: $item" || echo "[-] Symplinks failed: $item"
+    stow -R -t "${HOME}" $item 2>/dev/null && echo "[+] deployed: $item" || echo "[-] failed: $item"
 done
 
 

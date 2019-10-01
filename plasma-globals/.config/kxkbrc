@@ -1,0 +1,13 @@
+[Layout]
+DisplayNames=,
+LayoutList=us,ru(phonetic)
+LayoutLoopCount=-1
+Model=pc101
+Options=grp:alt_caps_toggle
+ResetOldOptions=true
+ShowFlag=false
+ShowLabel=true
+ShowLayoutIndicator=true
+ShowSingle=false
+SwitchMode=WinClass
+Use=true
