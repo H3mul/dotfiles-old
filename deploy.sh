@@ -14,6 +14,7 @@ plasma=(
     dolphin
     plasma-colors
     plasma-globals
+    plasma-shortcuts
 )
 
 full=("${cli[@]} ${plasma[@]}")
