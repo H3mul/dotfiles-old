@@ -121,7 +121,7 @@ smallestReadableFont=Noto Sans,8,-1,5,50,0,0,0,0,0,Regular
 toolBarFont=Noto Sans,10,-1,5,50,0,0,0,0,0,Regular
 
 [Icons]
-Theme=breath
+Theme=Papirus-Dark
 
 [KDE]
 contrast=4
