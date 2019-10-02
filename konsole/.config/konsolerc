@@ -1,29 +1,5 @@
 [Desktop Entry]
 DefaultProfile=Shell.profile
 
-[DownloadDialog Settings]
-Height 1080=454
-Width 1920=700
-
-[Favorite Profiles]
-Favorites=
-
 [KonsoleWindow]
 ShowMenuBarByDefault=false
-
-[MainWindow]
-Height 1080=500
-Height 1271=646
-Height 2160=2050
-MenuBar=Disabled
-State=AAAA/wAAAAD9AAAAAAAAA2AAAAJrAAAABAAAAAQAAAAIAAAACPwAAAAA
-ToolBarsMovable=Disabled
-Width 1920=958
-Width 2259=864
-Width 3840=1874
-
-[Notification Messages]
-CloseAllTabs=true
-
-[TabBar]
-TabBarPosition=Top
