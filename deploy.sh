@@ -12,8 +12,7 @@ cli=(
 plasma=(
     konsole
     dolphin
-    plasma-colors
-    plasma-globals
+    plasma-theme
     plasma-shortcuts
 )
 
