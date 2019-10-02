@@ -167,5 +167,5 @@ ButtonsOnLeft=SF
 ButtonsOnRight=IAX
 CloseOnDoubleClickOnMenu=false
 ShowToolTips=true
-library=org.kde.kwin.aurorae
-theme=__aurorae__svg__Materia-Manjaro-Dark
+library=org.kde.breeze
+theme=Breeze
