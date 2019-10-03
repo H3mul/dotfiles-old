@@ -13,7 +13,7 @@ plasma=(
     konsole
     dolphin
     plasma-theme
-    plasma-shortcuts
+    plasma-settings
 )
 
 full=("${cli[@]} ${plasma[@]}")
