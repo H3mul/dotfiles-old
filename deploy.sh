@@ -12,6 +12,7 @@ cli=(
 plasma=(
     konsole
     dolphin
+    keepass
     plasma-theme
     plasma-settings
 )
