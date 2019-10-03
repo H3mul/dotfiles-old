@@ -13,6 +13,7 @@ run command=Alt+Space\tAlt+F2\tSearch,Alt+Space,Run Command
 Lock Session=Meta+L\tCtrl+Alt+L\tScreensaver,Meta+L\tCtrl+Alt+L\tScreensaver,Lock Session
 
 [kwin]
+Activate Window Demanding Attention=none,Ctrl+Alt+A,Activate Window Demanding Attention
 ShowDesktopGrid=Meta+Tab,Ctrl+F8,Show Desktop Grid
 Switch One Desktop Down=Ctrl+Alt+Down,none,Switch One Desktop Down
 Switch One Desktop Up=Ctrl+Alt+Up,none,Switch One Desktop Up
