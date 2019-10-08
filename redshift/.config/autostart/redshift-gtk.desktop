@@ -1,0 +1,12 @@
+[Desktop Entry]
+Categories=Utility;
+Comment=Color temperature adjustment tool
+Exec=redshift-gtk
+GenericName=Color temperature adjustment
+Icon=redshift
+Name=Redshift
+StartupNotify=true
+Terminal=false
+Type=Application
+Version=1.0
+X-KDE-SubstituteUID=false
