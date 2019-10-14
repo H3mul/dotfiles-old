@@ -38,7 +38,7 @@ immutability=1
 plugin=org.kde.plasma.kickoff
 
 [Containments][1][Applets][2][Configuration]
-PreloadWeight=89
+PreloadWeight=100
 
 [Containments][1][Applets][2][Configuration][General]
 favorites=firefox.desktop,qupzilla.desktop,org.kde.dolphin.desktop,org.kde.konversation.desktop,libreoffice-writer.desktop,cantata.desktop,kde4-digikam.desktop,org.kde.konsole.desktop,pamac-manager.desktop,pamac-updater.desktop,systemsettings.desktop
@@ -68,6 +68,10 @@ PreloadWeight=0
 [Containments][1][Applets][4][Configuration][General]
 launchers=file:///usr/share/applications/org.kde.dolphin.desktop?wmClass=dolphin,file:///usr/share/applications/firefox.desktop?wmClass=firefox
 
+[Containments][1][Applets][47]
+immutability=1
+plugin=org.kde.plasma.systemloadviewer
+
 [Containments][1][Applets][5]
 immutability=1
 plugin=org.kde.plasma.showdesktop
@@ -87,7 +91,7 @@ immutability=1
 plugin=org.kde.plasma.systemtray
 
 [Containments][1][Applets][7][Configuration]
-PreloadWeight=0
+PreloadWeight=100
 SystrayContainmentId=8
 
 [Containments][1][Applets][7][Configuration][Containments][8]
@@ -102,14 +106,14 @@ plugin=org.kde.plasma.digitalclock
 PreloadWeight=0
 
 [Containments][1][ConfigDialog]
-DialogHeight=105
+DialogHeight=108
 DialogWidth=3840
 
 [Containments][1][Configuration]
 PreloadWeight=0
 
 [Containments][1][General]
-AppletOrder=2;3;4;5;6;7;8
+AppletOrder=2;3;4;5;6;7;47;8
 
 [Containments][35]
 activityId=6eceb471-1381-4a96-8397-9aa357c1815d
@@ -158,7 +162,7 @@ immutability=1
 plugin=org.kde.plasma.devicenotifier
 
 [Containments][8][Applets][38][Configuration]
-PreloadWeight=0
+PreloadWeight=10
 
 [Containments][8][Applets][39]
 immutability=1
@@ -179,7 +183,11 @@ immutability=1
 plugin=org.kde.plasma.notifications
 
 [Containments][8][Applets][41][Configuration]
-PreloadWeight=0
+PreloadWeight=15
+
+[Containments][8][Applets][41][Configuration][ConfigDialog]
+DialogHeight=1020
+DialogWidth=1360
 
 [Containments][8][Applets][42]
 immutability=1
@@ -207,14 +215,18 @@ immutability=1
 plugin=org.kde.plasma.networkmanagement
 
 [Containments][8][Applets][45][Configuration]
-PreloadWeight=0
+PreloadWeight=20
 
 [Containments][8][Applets][46]
 immutability=1
 plugin=org.kde.plasma.mediacontroller
 
 [Containments][8][Applets][46][Configuration]
-PreloadWeight=18
+PreloadWeight=0
+
+[Containments][8][ConfigDialog]
+DialogHeight=1020
+DialogWidth=1360
 
 [Containments][8][Configuration]
 PreloadWeight=0
