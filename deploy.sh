@@ -16,6 +16,7 @@ plasma=(
     keepass
     plasma-theme
     plasma-settings
+    plasma-startup
 )
 
 full=("${cli[@]} ${plasma[@]}")
