@@ -1,2 +1,6 @@
+[Libinput][1739][30383][DELL07E6:00 06CB:76AF Touchpad]
+PointerAcceleration=-0.200
+TapToClick=true
+
 [Mouse]
 cursorTheme=breeze_cursors

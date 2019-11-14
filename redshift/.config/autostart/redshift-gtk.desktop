@@ -3,6 +3,7 @@ Categories=Utility;
 Comment=Color temperature adjustment tool
 Exec=redshift-gtk
 GenericName=Color temperature adjustment
+Hidden=true
 Icon=redshift
 Name=Redshift
 StartupNotify=true

@@ -77,6 +77,12 @@ CommandWindow2=Activate and pass click
 CommandWindow3=Activate and pass click
 CommandWindowWheel=Scroll
 
+[NightColor]
+Active=true
+LatitudeAuto=49.2492
+LongitudeAuto=-123.1104
+NightTemperature=3800
+
 [Plugins]
 blurEnabled=true
 coverswitchEnabled=true

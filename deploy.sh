@@ -12,7 +12,6 @@ cli=(
 plasma=(
     konsole
     dolphin
-    redshift
     keepass
     plasma-theme
     plasma-settings
