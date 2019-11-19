@@ -20,7 +20,20 @@ plasma=(
 
 full=("${cli[@]} ${plasma[@]}")
 
-for item in ${full[@]}; do
+deploylist=${cli[@]}
+
+case "$1" in
+        full)
+            deploylist=${full[@]}
+            ;;
+        plasma)
+            deploylist=${plasma[@]}
+            ;;
+        *)
+            deploylist=${cli[@]}
+esac
+
+for item in ${deploylist[@]}; do
     stow -R -t "${HOME}" $item 2>/dev/null && echo "[+] deployed: $item" || echo "[-] failed: $item"
 done
 
