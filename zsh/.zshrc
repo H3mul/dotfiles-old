@@ -25,6 +25,7 @@ plugins=(
   zsh-autosuggestions
   z
   zsh-syntax-highlighting
+  vi-mode
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -49,3 +50,16 @@ unsetopt beep
 #xset b 0 0 0
 
 setopt no_share_history
+
+# vi mode prompt
+bindkey -v
+
+bindkey '^k' up-line-or-history
+bindkey '^j' down-line-or-history
+bindkey '^l' forward-char
+bindkey '^h' backward-char
+bindkey '^?' backward-delete-char
+bindkey '^w' backward-kill-word
+bindkey '^r' history-incremental-search-backward
+
+export KEYTIMEOUT=1
