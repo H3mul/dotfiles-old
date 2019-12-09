@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Chdir to dotfiles
-cd "$(dirname "$0")"
+dotfiles="$(dirname "$0")"
+cd $dotfiles
 
 cli=(
     zsh
@@ -30,11 +31,21 @@ case "$1" in
             deploylist=${plasma[@]}
             ;;
         *)
-            deploylist=${cli[@]}
+            if [ -z "$1" ]; then
+                # Default selection
+                deploylist=${cli[@]}
+            else
+                # Single package selection
+                deploylist=("$1")
+            fi
 esac
 
 for item in ${deploylist[@]}; do
-    stow -R -t "${HOME}" $item 2>/dev/null && echo "[+] deployed: $item" || echo "[-] failed: $item"
+    if [ -d "$dotfiles/$item" ]; then
+        stow -R -t "${HOME}" $item 2>/dev/null && echo "[+] deployed: $item" || echo "[-] failed: $item"
+    else
+        echo "[-] package doesnt exist: $item";
+    fi
 done
 
 
