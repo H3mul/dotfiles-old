@@ -22,6 +22,8 @@ call plug#end()
 
 " set number
 " set rnu 
+set wildmode=longest,list,full
+set wildmenu
 
 let g:secure_modelines_allowed_items = [
                 \ "textwidth",   "tw",
