@@ -1,4 +1,7 @@
-source ~/.aliases
+source ~/.zsh_aliases
+if [[ -f ~/.zsh_local ]]; then
+    source ~/.zsh_local
+fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH

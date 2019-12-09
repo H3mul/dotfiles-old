@@ -17,7 +17,3 @@ calc () {
 ds () {
     du -h -d 1 $@ | sort -hr
 }
-
-if [[ -f ~/.local_aliases ]]; then
-    source ~/.local_aliases
-fi
