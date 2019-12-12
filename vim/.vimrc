@@ -180,3 +180,7 @@ map <leader>rc :set operatorfunc=RangerChangeOperator<cr>g@
 map <leader>rd :RangerCD<cr>
 map <leader>rld :RangerLCD<cr>
 
+" auto trim whitespace
+
+map  <C-T>      :%s/\s\+$//g<CR>
+imap <C-T>      :%s/\s\+$//g<CR>
