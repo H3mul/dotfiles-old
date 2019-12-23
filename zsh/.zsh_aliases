@@ -9,6 +9,8 @@ alias ld='ls -ld .*'
 alias h='history'
 alias e='exit'
 
+alias timestamp='date "+%Y.%m.%d-%H.%M.%S"'
+
 calc () {
     cmd="print($@)"
     python -c $cmd
