@@ -58,10 +58,8 @@ setopt no_share_history
 bindkey -v
 export KEYTIMEOUT=1
 
-bindkey '^k' up-line-or-history
-bindkey '^j' down-line-or-history
-bindkey '^l' forward-char
-bindkey '^h' backward-char
+bindkey '^[l' forward-word
+bindkey '^[h' backward-word
 bindkey '^?' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
@@ -122,6 +120,9 @@ zle -N down-line-or-beginning-search
 
 [[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
 [[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
+
+bindkey '^[k' up-line-or-beginning-search
+bindkey '^[j' down-line-or-beginning-search
 
 ################################
 
