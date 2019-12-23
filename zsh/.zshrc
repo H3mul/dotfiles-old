@@ -65,6 +65,8 @@ bindkey '^h' backward-char
 bindkey '^?' backward-delete-char
 bindkey '^w' backward-kill-word
 bindkey '^r' history-incremental-search-backward
+bindkey "^[[1;5C" forward-word
+bindkey "^[[1;5D" backward-word
 
 # From
 # https://wiki.archlinux.org/index.php/Zsh#Key_bindings
