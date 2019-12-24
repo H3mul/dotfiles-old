@@ -1,18 +1,17 @@
 if empty(glob('~/.vim/autoload/plug.vim'))
-	  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-	      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+                \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
 endif
 
 
-call plug#begin()
-
-" plugin manager
-Plug 'junegunn/vim-plug'
+call plug#begin('~/.vim/plugged')
 
 Plug 'ciaranm/securemodelines'
 
 Plug 'rafaqz/ranger.vim'
+
+Plug 'itchyny/lightline.vim'
 
 call plug#end()
 
@@ -44,32 +43,32 @@ set mouse=a
 set ignorecase
 
 " Window management
-map <F10> <C-W>=
-imap <F10> <C-O><C-W>=
-map <F11> <C-W>-
-imap <F11> <C-O><C-W>-
-map <F12> <C-W>+
-imap <F12> <C-O><C-W>+
-map <C-F11> :res 1<CR>
-imap <C-F11> <C-O>:res 1<CR>
-map <C-F12> <C-W>_
-imap <C-F12> <C-O><C-W>_
-map <C-Up> <C-W><Up>
-imap <C-Up> <C-O><C-W><Up>
-map <C-Down> <C-W><Down>
-imap <C-Down> <C-O><C-W><Down>
-map <C-Left> <C-W><Left>
-imap <C-Left> <C-O><C-W><Left>
-map <C-Right> <C-W><Right>
-imap <C-Right> <C-O><C-W><Right>
-map <C-K> <C-W><Up>
-imap <C-K> <C-O><C-W><Up>
-map <C-J> <C-W><Down>
-imap <C-J> <C-O><C-W><Down>
-map <C-H> <C-W><Left>
-imap <C-H> <C-O><C-W><Left>
-map <C-L> <C-W><Right>
-imap <C-L> <C-O><C-W><Right>
+map  <F10>      <C-W>=
+imap <F10>      <C-O><C-W>=
+map  <F11>      <C-W>-
+imap <F11>      <C-O><C-W>-
+map  <F12>      <C-W>+
+imap <F12>      <C-O><C-W>+
+map  <C-F11>    :res 1<CR>
+imap <C-F11>    <C-O>:res 1<CR>
+map  <C-F12>    <C-W>_
+imap <C-F12>    <C-O><C-W>_
+map  <C-Up>     <C-W><Up>
+imap <C-Up>     <C-O><C-W><Up>
+map  <C-Down>   <C-W><Down>
+imap <C-Down>   <C-O><C-W><Down>
+map  <C-Left>   <C-W><Left>
+imap <C-Left>   <C-O><C-W><Left>
+map  <C-Right>  <C-W><Right>
+imap <C-Right>  <C-O><C-W><Right>
+map  <C-K>      <C-W><Up>
+imap <C-K>      <C-O><C-W><Up>
+map  <C-J>      <C-W><Down>
+imap <C-J>      <C-O><C-W><Down>
+map  <C-H>      <C-W><Left>
+imap <C-H>      <C-O><C-W><Left>
+map  <C-L>      <C-W><Right>
+imap <C-L>      <C-O><C-W><Right>
 
 " Toggle search highlighting
 map <F5> :set hlsearch!<Bar>set hlsearch?<CR>
@@ -184,3 +183,9 @@ map <leader>rld :RangerLCD<cr>
 
 map  <C-T>      :%s/\s\+$//g<CR>
 imap <C-T>      :%s/\s\+$//g<CR>
+
+" Remove line at the bottom of screen
+set cmdheight=1
+set noshowmode
+let g:lightline = {'colorscheme': 'deus'}
+
