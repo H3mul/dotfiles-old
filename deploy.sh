@@ -8,6 +8,7 @@ cli=(
     zsh
     vim
     git
+    bin
 )
 
 plasma=(
