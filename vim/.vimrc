@@ -11,6 +11,8 @@ Plug 'ciaranm/securemodelines'
 
 Plug 'rafaqz/ranger.vim'
 
+Plug 'wadackel/vim-dogrun'
+
 Plug 'itchyny/lightline.vim'
 
 call plug#end()
@@ -187,5 +189,4 @@ imap <C-T>      :%s/\s\+$//g<CR>
 " Remove line at the bottom of screen
 set cmdheight=1
 set noshowmode
-let g:lightline = {'colorscheme': 'deus'}
-
+let g:lightline = {'colorscheme': 'dogrun'}
