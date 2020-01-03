@@ -108,6 +108,7 @@ ForegroundPositive=113,247,159
 ForegroundVisited=179,13,191
 
 [General]
+BrowserApplication[$e]=google-chrome.desktop
 ColorScheme=Sweet
 Name=Breath
 XftHintStyle=
