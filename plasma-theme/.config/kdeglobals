@@ -151,8 +151,8 @@ Speedbar Width=135
 View Style=DetailTree
 
 [KScreen]
-ScaleFactor=1.7
-ScreenScaleFactors=eDP1=1.7;DP1=1.7;DP2=1.7;VIRTUAL1=1.7;
+ScaleFactor=1.6
+ScreenScaleFactors=eDP1=1.6;DP1=1.6;DP2=1.6;VIRTUAL1=1.6;
 
 [Toolbar style]
 ToolButtonStyle=NoText

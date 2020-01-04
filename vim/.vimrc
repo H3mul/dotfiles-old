@@ -11,18 +11,19 @@ Plug 'ciaranm/securemodelines'
 
 Plug 'rafaqz/ranger.vim'
 
-Plug 'wadackel/vim-dogrun'
+Plug 'majutsushi/tagbar'
+
+Plug 'preservim/nerdtree'
 
 Plug 'itchyny/lightline.vim'
 
+Plug 'arcticicestudio/nord-vim'
+
 call plug#end()
 
-
-" ========
-" SETTINGS
-
-" set number
+set number
 " set rnu 
+set cursorline
 set wildmode=longest,list,full
 set wildmenu
 
@@ -42,7 +43,6 @@ let g:secure_modelines_allowed_items = [
 autocmd BufRead,BufNewFile * set formatoptions-=o
 
 set mouse=a
-set ignorecase
 
 " Window management
 map  <F10>      <C-W>=
@@ -74,6 +74,13 @@ imap <C-L>      <C-O><C-W><Right>
 
 " Toggle search highlighting
 map <F5> :set hlsearch!<Bar>set hlsearch?<CR>
+" highlight search by default
+set hlsearch
+
+" Ignore case search
+set ignorecase
+" Go to match as they are found when typed
+set incsearch
 
 " Toggle paste
 set pastetoggle=<F6>
@@ -115,10 +122,6 @@ set tabstop=8
 " Make backspace work 'normally' in Insert mode
 set backspace=indent,eol,start
 
-" Turn off search highlighting
-set nohlsearch
-" Go to match as they are found when typed
-set incsearch
 " Show incomplete commands
 set showcmd
 " Parse files for vim line
@@ -166,8 +169,6 @@ let g:netrw_liststyle = 3
 " remove info banner
 let g:netrw_banner = 0
 
-set autochdir
-
 set noequalalways
 
 " ranger mappings
@@ -186,7 +187,22 @@ map <leader>rld :RangerLCD<cr>
 map  <C-T>      :%s/\s\+$//g<CR>
 imap <C-T>      :%s/\s\+$//g<CR>
 
+
+" tagbar shortcut
+nmap <F9> :TagbarToggle<CR>
+nmap <F8> :NERDTreeToggle<CR>
+
 " Remove line at the bottom of screen
 set cmdheight=1
 set noshowmode
-let g:lightline = {'colorscheme': 'dogrun'}
+
+" NORD STUFF
+let g:lightline = {'colorscheme': 'nord'}
+colorscheme nord
+
+set encoding=UTF-8
+
+let g:nord_uniform_diff_background = 1
+let g:nord_italic = 1
+let g:nord_italic_comments = 1
+let g:nord_underline = 1
