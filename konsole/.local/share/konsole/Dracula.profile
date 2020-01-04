@@ -1,11 +1,8 @@
 [Appearance]
-AntiAliasFonts=true
-BoldIntense=true
-ColorScheme=Sweet
+ColorScheme=klorax.dracula-opaque
 Font=Droid Sans Mono,10,-1,5,50,0,0,0,0,0,Regular
-UseFontLineChararacters=false
 
 [General]
-Name=Shell
+Name=Dracula
 Parent=FALLBACK/
 RemoteTabTitleFormat=%w
