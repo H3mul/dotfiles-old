@@ -154,10 +154,6 @@ set nowrap
 " Select All
 map <C-A> :norm ggVG<CR>
 
-" Comment/uncomment
-vmap ,c :s/^/#/<CR>
-vmap ,u :s/^\(\s*\)#/\1/<CR>
-
 " vim won't set the title of the terminal window unless $DISPLAY and $WINDOWID
 " are set.  If bash's $PROMPT_COMMAND is set, then the title can be safely
 " set.
