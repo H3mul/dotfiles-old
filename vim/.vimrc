@@ -23,6 +23,8 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'gabrielelana/vim-markdown'
 
+Plug 'tpope/vim-commentary'
+
 call plug#end()
 
 set number
