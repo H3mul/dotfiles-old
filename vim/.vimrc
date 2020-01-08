@@ -19,6 +19,10 @@ Plug 'itchyny/lightline.vim'
 
 Plug 'arcticicestudio/nord-vim'
 
+Plug 'airblade/vim-gitgutter'
+
+Plug 'gabrielelana/vim-markdown'
+
 call plug#end()
 
 set number
@@ -77,6 +81,8 @@ map <F5> :set hlsearch!<Bar>set hlsearch?<CR>
 " highlight search by default
 set hlsearch
 
+" Toggle git gutter
+map <F7> :GitGutterToggle<CR>
 " Ignore case search
 set ignorecase
 " Go to match as they are found when typed
@@ -206,3 +212,6 @@ let g:nord_uniform_diff_background = 1
 let g:nord_italic = 1
 let g:nord_italic_comments = 1
 let g:nord_underline = 1
+
+" Dont underline things in markdown
+au FileType markdown setlocal nospell
