@@ -126,6 +126,8 @@ zle -N down-line-or-beginning-search
 bindkey '^[k' up-line-or-beginning-search
 bindkey '^[j' down-line-or-beginning-search
 
+bindkey '^S' sudo-command-line
+
 ################################
 
 # user-wide npm install
