@@ -213,3 +213,7 @@ let g:nord_underline = 1
 
 " Dont underline things in markdown
 au FileType markdown setlocal nospell
+
+" Dont show help on F1
+map <F1> <nop>
+imap <F1> <nop>
