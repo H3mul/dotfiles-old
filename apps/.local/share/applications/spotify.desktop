@@ -1,0 +1,22 @@
+[Desktop Entry]
+Categories=Audio;Music;Player;AudioVideo;
+Comment[en_US]=
+Comment=
+Exec=kdocker -i /usr/share/icons/Papirus-Dark/64x64/apps/spotify.svg spotify --force-device-scale-factor=1.7 %U
+GenericName[en_US]=Music Player
+GenericName=Music Player
+Icon=spotify-client
+MimeType=
+Name[en_US]=Spotify
+Name=Spotify
+Path=
+StartupNotify=true
+StartupWMClass=spotify
+Terminal=false
+TerminalOptions=
+TryExec=spotify
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

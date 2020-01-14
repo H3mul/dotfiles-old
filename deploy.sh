@@ -43,7 +43,7 @@ esac
 
 for item in ${deploylist[@]}; do
     if [ -d "$dotfiles/$item" ]; then
-        stow -R -t "${HOME}" $item 2>/dev/null && echo "[+] deployed: $item" || echo "[-] failed: $item"
+        stow -R -t "${HOME}" $item 2>/dev/null && echo "[+] Deployed: $item" || echo "[-] failed: $item"
     else
         echo "[-] package doesnt exist: $item";
     fi
