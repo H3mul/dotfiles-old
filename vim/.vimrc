@@ -25,6 +25,12 @@ Plug 'gabrielelana/vim-markdown'
 
 Plug 'tpope/vim-commentary'
 
+Plug 'pearofducks/ansible-vim'
+
+Plug 'chr4/nginx.vim'
+
+Plug 'RRethy/vim-illuminate'
+
 call plug#end()
 
 set number
