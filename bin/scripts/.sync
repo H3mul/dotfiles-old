@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Generic rsync .sync script for eshion/vim-sync
+
+server=""
+path=""
+
+if [ "upload" == $1 ];then
+    rsync -azcuv -e ssh `dirname $0`/$2/$3 "${server}:${path}"/$2/$3
+elif [ 'download' == $1 ];then
+    rsync -azcuv -e ssh "${server}:${path}"/$2/$3 `dirname $0`/$2/$3
+fi
