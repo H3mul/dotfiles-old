@@ -133,3 +133,8 @@ bindkey '^S' sudo-command-line
 # user-wide npm install
 PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix=~/.node_modules
+
+# add scripts to path
+PATH="$HOME/scripts:$PATH"
+
+set -o ignoreeof
