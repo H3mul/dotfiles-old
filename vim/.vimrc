@@ -31,6 +31,14 @@ Plug 'chr4/nginx.vim'
 
 Plug 'RRethy/vim-illuminate'
 
+Plug 'skywind3000/asyncrun.vim'
+
+Plug 'eshion/vim-sync'
+
+Plug 'airblade/vim-rooter'
+
+Plug 'junegunn/vim-easy-align'
+
 call plug#end()
 
 set number
@@ -223,3 +231,8 @@ au FileType markdown setlocal nospell
 " Dont show help on F1
 map <F1> <nop>
 imap <F1> <nop>
+
+" Set ga to easy-align
+
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
