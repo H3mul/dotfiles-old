@@ -3,4 +3,5 @@ PointerAcceleration=-0.200
 TapToClick=true
 
 [Mouse]
+XLbInptPointerAcceleration=-0.8
 cursorTheme=breeze_cursors
