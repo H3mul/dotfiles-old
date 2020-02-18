@@ -21,6 +21,7 @@ ZSH_THEME="hemul"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  systemd
   sudo
   zsh-autosuggestions
   z
