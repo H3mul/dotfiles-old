@@ -21,7 +21,7 @@ swipe:
       command: 'xdotool key ctrl+alt+Down'
 
 threshold:
-  swipe: 1
+  swipe: 1.5
 
 interval:
   swipe: 1
