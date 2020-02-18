@@ -7,6 +7,12 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+" Theming
+Plug 'itchyny/lightline.vim'
+
+Plug 'arcticicestudio/nord-vim'
+
+" Utility
 Plug 'ciaranm/securemodelines'
 
 Plug 'rafaqz/ranger.vim'
@@ -15,19 +21,9 @@ Plug 'majutsushi/tagbar'
 
 Plug 'preservim/nerdtree'
 
-Plug 'itchyny/lightline.vim'
-
-Plug 'arcticicestudio/nord-vim'
-
 Plug 'airblade/vim-gitgutter'
 
-Plug 'gabrielelana/vim-markdown'
-
 Plug 'tpope/vim-commentary'
-
-Plug 'pearofducks/ansible-vim'
-
-Plug 'chr4/nginx.vim'
 
 Plug 'RRethy/vim-illuminate'
 
@@ -38,6 +34,9 @@ Plug 'eshion/vim-sync'
 Plug 'airblade/vim-rooter'
 
 Plug 'junegunn/vim-easy-align'
+
+" Syntax
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
@@ -233,6 +232,14 @@ map <F1> <nop>
 imap <F1> <nop>
 
 " Set ga to easy-align
-
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
+
+" Typo central
+command WQ wq
+command Wq wq
+command W w
+command Q q
+
+" w!! to write with sudo even if not opened with sudo
+cmap w!! w !sudo tee >/dev/null %
