@@ -4,9 +4,10 @@ Description=Fusuma multitouch gesture recognizer
 [Service]
 Type=simple
 Environment="DISPLAY=:0"
-ExecStart=/usr/bin/fusuma -d
+ExecStart=/usr/bin/fusuma
+StandardOutput=null
 KillMode=process
-Restart=on-failure
+Restart=always
 
 [Install]
 WantedBy=graphical.target
