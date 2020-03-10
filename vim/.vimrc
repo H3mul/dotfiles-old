@@ -35,13 +35,16 @@ Plug 'airblade/vim-rooter'
 
 Plug 'junegunn/vim-easy-align'
 
+" Shell commands (move, delete, locate)
+Plug 'tpope/vim-eunuch'
+
 " Syntax
 Plug 'sheerun/vim-polyglot'
 
 call plug#end()
 
 set number
-" set rnu 
+" set rnu
 set cursorline
 set wildmode=longest,list,full
 set wildmenu
@@ -98,8 +101,12 @@ set hlsearch
 
 " Toggle git gutter
 map <F7> :GitGutterToggle<CR>
-" Ignore case search
+
+" Search
+set incsearch
 set ignorecase
+set smartcase
+set gdefault
 " Go to match as they are found when typed
 set incsearch
 
@@ -107,6 +114,10 @@ set incsearch
 set pastetoggle=<F6>
 map <F6> :set paste!<CR>i
 imap <F6> <C-O>:set paste!<CR>
+
+" Format json using python json.tool
+map <F4> :%!python -m json.tool<CR>
+imap <F4> <C-O>:%!python -m json.tool<CR>
 
 " Turn on syntax highlighting if it's supported
 if has('syntax') && &t_Co > 2
@@ -199,11 +210,8 @@ map <leader>rc :set operatorfunc=RangerChangeOperator<cr>g@
 map <leader>rd :RangerCD<cr>
 map <leader>rld :RangerLCD<cr>
 
-" auto trim whitespace
-
-map  <C-T>      :%s/\s\+$//g<CR>
-imap <C-T>      :%s/\s\+$//g<CR>
-
+" Delete trailing whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
 
 " tagbar shortcut
 nmap <F9> :TagbarToggle<CR>
@@ -243,3 +251,19 @@ command Q q
 
 " w!! to write with sudo even if not opened with sudo
 cmap w!! w !sudo tee >/dev/null %
+
+" Execute currently edited script
+autocmd Filetype python nnoremap <buffer> <leader>e :w<CR>:! python -u "%"<CR>
+
+" Editor settings
+
+set timeoutlen=300 " http://stackoverflow.com/questions/2158516/delay-before-o-opens-a-new-line
+set scrolloff=2
+set hidden
+set nojoinspaces
+
+" Use clipboard all the time
+set clipboard+=unnamedplus
+
+set ttyfast
+set lazyredraw
