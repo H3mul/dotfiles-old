@@ -35,8 +35,7 @@ Plug 'airblade/vim-rooter'
 
 Plug 'junegunn/vim-easy-align'
 
-" Shell commands (move, delete, locate)
-Plug 'tpope/vim-eunuch'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Syntax
 Plug 'sheerun/vim-polyglot'
