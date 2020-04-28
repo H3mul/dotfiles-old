@@ -2,11 +2,38 @@
 
 # Generic rsync .sync script for eshion/vim-sync
 
+# Config
 server=""
 path=""
 
+sync() {
+    rsync -azcuv -e "/bin/ssh -p36000 -q" $1 $2
+}
+
+#############################
+
+if [ -z $1 ];then
+    echo "Usage: $0 <upload | download>"
+    exit
+fi
+
+if [ -z $server ] || [ -z $path ];then
+    echo "Must set server and path variables."
+    exit
+fi
+
+#############################
+
+if [ -z $2 ];then
+    src=`dirname $0`/
+    dst="${server}:${path}"/
+else
+    src=`dirname $0`/$2/$3
+    dst="${server}:${path}"/$2/
+fi
+
 if [ "upload" == $1 ];then
-    rsync -azcuv -e ssh `dirname $0`/$2/$3 "${server}:${path}"/$2/$3
+    sync $src $dst
 elif [ 'download' == $1 ];then
-    rsync -azcuv -e ssh "${server}:${path}"/$2/$3 `dirname $0`/$2/$3
+    sync $dst $src
 fi
