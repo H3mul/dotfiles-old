@@ -43,3 +43,6 @@ ipleak () {
     curl "https://ipleak.net/json/$@"
 }
 
+alias grive-sync='killall grive; cd ~/GoogleDrive && grive'
+
+alias open="xdg-open"

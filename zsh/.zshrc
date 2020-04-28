@@ -21,6 +21,7 @@ ZSH_THEME="hemul"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  fzf
   systemd
   sudo
   zsh-autosuggestions
@@ -139,3 +140,11 @@ export npm_config_prefix=~/.node_modules
 PATH="$HOME/scripts:$PATH"
 
 set -o ignoreeof
+
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
+export FZF_DEFAULT_OPTS='
+--color fg:252,hl:67,fg+:252,bg+:235,hl+:81
+--color info:144,prompt:161,spinner:135,pointer:135,marker:118
+'
