@@ -4,7 +4,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     autocmd VimEnter * PlugInstall --sync | source ~/.vimrc
 endif
 
-
 call plug#begin('~/.vim/plugged')
 
 " Theming
@@ -14,8 +13,6 @@ Plug 'arcticicestudio/nord-vim'
 
 " Utility
 Plug 'ciaranm/securemodelines'
-
-Plug 'rafaqz/ranger.vim'
 
 Plug 'majutsushi/tagbar'
 
@@ -35,7 +32,15 @@ Plug 'airblade/vim-rooter'
 
 Plug 'junegunn/vim-easy-align'
 
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf.vim'
+
+Plug 'tpope/vim-surround'
+
+Plug 'tpope/vim-repeat'
+
+Plug 'triglav/vim-visual-increment'
+
+Plug 'yuki-ycino/fzf-preview.vim'
 
 " Syntax
 Plug 'sheerun/vim-polyglot'
@@ -174,9 +179,6 @@ set listchars=tab:>-,precedes:<,extends:>
 " Don't display text as wrapped
 set nowrap
 
-" Select All
-map <C-A> :norm ggVG<CR>
-
 " vim won't set the title of the terminal window unless $DISPLAY and $WINDOWID
 " are set.  If bash's $PROMPT_COMMAND is set, then the title can be safely
 " set.
@@ -197,17 +199,6 @@ let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 
 set noequalalways
-
-" ranger mappings
-map <leader>rr :RangerEdit<cr>
-map <leader>rv :RangerVSplit<cr>
-map <leader>rs :RangerSplit<cr>
-map <leader>rt :RangerTab<cr>
-map <leader>ri :RangerInsert<cr>
-map <leader>ra :RangerAppend<cr>
-map <leader>rc :set operatorfunc=RangerChangeOperator<cr>g@
-map <leader>rd :RangerCD<cr>
-map <leader>rld :RangerLCD<cr>
 
 " Delete trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
@@ -256,7 +247,6 @@ autocmd Filetype python nnoremap <buffer> <leader>e :w<CR>:! python -u "%"<CR>
 
 " Editor settings
 
-set timeoutlen=300 " http://stackoverflow.com/questions/2158516/delay-before-o-opens-a-new-line
 set scrolloff=2
 set hidden
 set nojoinspaces
@@ -266,3 +256,27 @@ set clipboard+=unnamedplus
 
 set ttyfast
 set lazyredraw
+
+" Navigate wrapped lines
+:nnoremap k gk
+:nnoremap j gj
+
+" FZF preview
+
+nmap <Leader>f [fzf-p]
+xmap <Leader>f [fzf-p]
+
+nnoremap <silent> [fzf-p]p     :<C-u>FzfPreviewFromResources project_mru git<CR>
+nnoremap <silent> [fzf-p]gs    :<C-u>FzfPreviewGitStatus<CR>
+nnoremap <silent> [fzf-p]b     :<C-u>FzfPreviewBuffers<CR>
+nnoremap <silent> [fzf-p]B     :<C-u>FzfPreviewAllBuffers<CR>
+nnoremap <silent> [fzf-p]o     :<C-u>FzfPreviewFromResources buffer project_mru<CR>
+nnoremap <silent> [fzf-p]<C-o> :<C-u>FzfPreviewJumps<CR>
+nnoremap <silent> [fzf-p]g;    :<C-u>FzfPreviewChanges<CR>
+nnoremap <silent> [fzf-p]/     :<C-u>FzfPreviewLines -add-fzf-arg=--no-sort -add-fzf-arg=--query="'"<CR>
+nnoremap <silent> [fzf-p]*     :<C-u>FzfPreviewLines -add-fzf-arg=--no-sort -add-fzf-arg=--query="'<C-r>=expand('<cword>')<CR>"<CR>
+nnoremap          [fzf-p]gr    :<C-u>FzfPreviewProjectGrep<Space>
+xnoremap          [fzf-p]gr    "sy:FzfPreviewProjectGrep<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
+nnoremap <silent> [fzf-p]t     :<C-u>FzfPreviewBufferTags<CR>
+nnoremap <silent> [fzf-p]q     :<C-u>FzfPreviewQuickFix<CR>
+nnoremap <silent> [fzf-p]l     :<C-u>FzfPreviewLocationList<CR>
