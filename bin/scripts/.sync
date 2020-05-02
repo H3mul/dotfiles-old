@@ -7,7 +7,7 @@ server=""
 path=""
 
 sync() {
-    rsync -azcuv -e "/bin/ssh -p36000 -q" $1 $2
+    rsync -azzuv -e "/bin/ssh -q" $1 $2
 }
 
 #############################
