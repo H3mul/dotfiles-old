@@ -3,11 +3,31 @@ if [[ -f ~/.zsh_local ]]; then
     source ~/.zsh_local
 fi
 
+zsh_plugin_home=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/
+zsh_plugin () {
+    if [[ -z $1 ]]; then; return; fi;
+    # eg wfxr/forgit
+    plugin_path=$1
+    plugin=${plugin_path#*\/}
+    plugin_home="$zsh_plugin_home/$plugin"
+
+    if [ ! -d  "$plugin_home" ]; then
+        echo "[+] installing $plugin for zsh..."
+        git clone "https://github.com/$plugin_path" "$plugin_home"
+    fi
+}
+
+zsh_plugin 'wfxr/forgit'
+zsh_plugin 'zsh-users/zsh-syntax-highlighting'
+zsh_plugin 'zsh-users/zsh-autosuggestions'
+
+unset zsh_plugin
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH="$HOME/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -20,7 +40,6 @@ ZSH_THEME="hemul"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
   fzf
   systemd
   sudo
@@ -28,6 +47,7 @@ plugins=(
   z
   zsh-syntax-highlighting
   vi-mode
+  forgit
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -39,12 +59,7 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
- else
-   export EDITOR='vim'
- fi
+export EDITOR='vim'
 
 # No beeps
 unsetopt beep
@@ -146,5 +161,6 @@ source /usr/share/fzf/completion.zsh
 
 export FZF_DEFAULT_OPTS='
 --color fg:252,hl:67,fg+:252,bg+:235,hl+:81
---color info:144,prompt:161,spinner:135,pointer:135,marker:118
-'
+--color info:144,prompt:161,spinner:135,pointer:135,marker:118'
+
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
