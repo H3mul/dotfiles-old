@@ -8,39 +8,28 @@ call plug#begin('~/.vim/plugged')
 
 " Theming
 Plug 'itchyny/lightline.vim'
-
 Plug 'arcticicestudio/nord-vim'
+Plug 'mhinz/vim-startify'
 
 " Utility
 Plug 'ciaranm/securemodelines'
-
 Plug 'majutsushi/tagbar'
-
 Plug 'preservim/nerdtree'
-
 Plug 'airblade/vim-gitgutter'
-
 Plug 'tpope/vim-commentary'
-
 Plug 'RRethy/vim-illuminate'
-
 Plug 'skywind3000/asyncrun.vim'
-
 Plug 'eshion/vim-sync'
-
 Plug 'airblade/vim-rooter'
-
 Plug 'junegunn/vim-easy-align'
-
 Plug 'junegunn/fzf.vim'
-
 Plug 'tpope/vim-surround'
-
 Plug 'tpope/vim-repeat'
-
 Plug 'triglav/vim-visual-increment'
-
-Plug 'yuki-ycino/fzf-preview.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'heavenshell/vim-jsdoc'
+Plug 'rhysd/git-messenger.vim'
+Plug 'machakann/vim-highlightedyank'
 
 " Syntax
 Plug 'sheerun/vim-polyglot'
@@ -261,22 +250,61 @@ set lazyredraw
 :nnoremap k gk
 :nnoremap j gj
 
-" FZF preview
+
+"##############################
+" FZF preview floating window
+
+let g:fzf_preview_window = 'right:50%'
+let g:fzf_layout = { 'window': 'call Centered_floating_window()' }
+
+if &termguicolors
+    let g:preview_floating_window_winblend = 15
+else
+    let g:preview_floating_window_winblend = 0
+endif
+
+function! Centered_floating_window() abort
+    let width = float2nr(&columns * 0.9)
+    let height = float2nr(&lines * 0.9)
+    let top = ((&lines - height) / 2) - 1
+    let left = (&columns - width) / 2
+    let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
+
+    let top = '╭' . repeat('─', width - 2) . '╮'
+    let mid = '│' . repeat(' ', width - 2) . '│'
+    let bot = '╰' . repeat('─', width - 2) . '╯'
+    let lines = [top] + repeat([mid], height - 2) + [bot]
+
+    let s:b_buf = nvim_create_buf(v:false, v:true)
+    call nvim_buf_set_lines(s:b_buf, 0, -1, v:true, lines)
+    call nvim_open_win(s:b_buf, v:true, opts)
+
+    set winhl=Normal:Floating
+    let opts.row += 1
+    let opts.height -= 2
+    let opts.col += 2
+    let opts.width -= 4
+    let s:f_buf = nvim_create_buf(v:false, v:true)
+    call nvim_open_win(s:f_buf, v:true, opts)
+
+    setlocal filetype=fzf
+    setlocal nocursorcolumn
+    execute 'set winblend=' . g:preview_floating_window_winblend
+
+    augroup preview_floating_window
+        " autocmd FileType fzf call s:set_fzf_last_query()
+        autocmd WinLeave <buffer> silent! execute 'bdelete! ' . s:f_buf . ' ' . s:b_buf
+    augroup END
+endfunction
 
 nmap <Leader>f [fzf-p]
 xmap <Leader>f [fzf-p]
 
-nnoremap <silent> [fzf-p]p     :<C-u>FzfPreviewFromResources project_mru git<CR>
-nnoremap <silent> [fzf-p]gs    :<C-u>FzfPreviewGitStatus<CR>
-nnoremap <silent> [fzf-p]b     :<C-u>FzfPreviewBuffers<CR>
-nnoremap <silent> [fzf-p]B     :<C-u>FzfPreviewAllBuffers<CR>
-nnoremap <silent> [fzf-p]o     :<C-u>FzfPreviewFromResources buffer project_mru<CR>
-nnoremap <silent> [fzf-p]<C-o> :<C-u>FzfPreviewJumps<CR>
-nnoremap <silent> [fzf-p]g;    :<C-u>FzfPreviewChanges<CR>
-nnoremap <silent> [fzf-p]/     :<C-u>FzfPreviewLines -add-fzf-arg=--no-sort -add-fzf-arg=--query="'"<CR>
-nnoremap <silent> [fzf-p]*     :<C-u>FzfPreviewLines -add-fzf-arg=--no-sort -add-fzf-arg=--query="'<C-r>=expand('<cword>')<CR>"<CR>
-nnoremap          [fzf-p]gr    :<C-u>FzfPreviewProjectGrep<Space>
-xnoremap          [fzf-p]gr    "sy:FzfPreviewProjectGrep<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
-nnoremap <silent> [fzf-p]t     :<C-u>FzfPreviewBufferTags<CR>
-nnoremap <silent> [fzf-p]q     :<C-u>FzfPreviewQuickFix<CR>
-nnoremap <silent> [fzf-p]l     :<C-u>FzfPreviewLocationList<CR>
+nmap <Leader>g [git]
+xmap <Leader>g [git]
+
+nnoremap <silent> [fzf-p]p     :<C-u>Files<CR>
+nnoremap <silent> [fzf-p]gs    :<C-u>GFiles?<CR>
+
+nnoremap <silent> [git]s    :<C-u>GFiles?<CR>
+nnoremap <silent> [git]c    :<C-u>GitMessenger<CR>
