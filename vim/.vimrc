@@ -304,7 +304,6 @@ nmap <Leader>g [git]
 xmap <Leader>g [git]
 
 nnoremap <silent> [fzf-p]p     :<C-u>Files<CR>
-nnoremap <silent> [fzf-p]gs    :<C-u>GFiles?<CR>
 
 nnoremap <silent> [git]s    :<C-u>GFiles?<CR>
 nnoremap <silent> [git]c    :<C-u>GitMessenger<CR>
