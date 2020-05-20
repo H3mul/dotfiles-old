@@ -95,6 +95,9 @@ set hlsearch
 " Toggle git gutter
 map <F7> :GitGutterToggle<CR>
 
+" Wrapping with gq
+set textwidth=80
+
 " Search
 set incsearch
 set ignorecase
