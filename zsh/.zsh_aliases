@@ -46,3 +46,11 @@ ipleak () {
 alias grive-sync='killall grive; cd ~/GoogleDrive && grive'
 
 alias open="xdg-open"
+
+kc () {
+    pass=$(secret-tool lookup Title $1)
+    if [[ ! -z $pass ]];then
+       echo $pass | xclip -selection clipboard
+    fi
+    pass=""
+}
