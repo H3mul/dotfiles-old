@@ -50,7 +50,16 @@ alias open="xdg-open"
 kc () {
     pass=$(secret-tool lookup Title $1)
     if [[ ! -z $pass ]];then
-       echo $pass | xclip -selection clipboard
+        echo $pass | xclip -selection clipboard -rmlastnl
+    else
+        echo "Password copy failed. Keyring locked or entry doesnt exist."
+        nh keepassxc
     fi
     pass=""
+}
+
+alias less="less -WiNS"
+
+nh () {
+    (nohup "$@" >/dev/null 2>&1 &) > /dev/null 2>&1
 }
