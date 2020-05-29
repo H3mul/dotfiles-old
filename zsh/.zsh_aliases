@@ -8,7 +8,13 @@ alias ld='ls -ld .*'
 alias h='history'
 alias e='exit'
 
-alias timestamp='date "+%Y.%m.%d-%H.%M.%S"'
+timestamp-file () {
+    date "+%Y.%m.%d-%H.%M.%S"
+}
+
+timestamp () {
+    date "+%Y-%m-%d %H:%M:%S"
+}
 
 alias grepr="grep -rni"
 
@@ -61,5 +67,21 @@ kc () {
 alias less="less -WiNS"
 
 nh () {
+    if [ -z $1 ]; then
+        echo "Silent nohup disconnection script."
+        echo "Usage: nh <command>"
+    fi
     (nohup "$@" >/dev/null 2>&1 &) > /dev/null 2>&1
 }
+
+prepend () {
+    if [ -z $1 ]; then
+        echo "Prepend and print every line piped in with the result of a comand."
+        echo "Usage: prepend <command>"
+    fi
+
+    while read line; do
+        echo "$($@) $line"
+    done
+}
+
