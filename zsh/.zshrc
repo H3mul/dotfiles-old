@@ -44,7 +44,7 @@ plugins=(
   systemd
   sudo
   zsh-autosuggestions
-  z
+  # z
   zsh-syntax-highlighting
   vi-mode
   forgit
@@ -148,8 +148,9 @@ bindkey '^S' sudo-command-line
 ################################
 
 # user-wide npm install
-PATH="$HOME/.node_modules/bin:$PATH"
-export npm_config_prefix=~/.node_modules
+PATH="$HOME/.node/bin:$PATH"
+export NODE_PATH="$HOME/.node/lib/node_modules"
+export NPM_CONFIG_PREFIX="$HOME/.node"
 
 # add scripts to path
 PATH="$HOME/scripts:$PATH"

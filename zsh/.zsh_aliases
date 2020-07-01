@@ -85,3 +85,4 @@ prepend () {
     done
 }
 
+alias dc="docker-compose"
