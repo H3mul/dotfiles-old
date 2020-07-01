@@ -6,7 +6,7 @@ cd $dotfiles
 
 cli=(
     zsh
-    vim
+    nvim
     git
     bin
 )
