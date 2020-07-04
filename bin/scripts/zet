@@ -56,6 +56,10 @@ case $1 in
 
         exit
         ;;
+    "find")
+        note=$(cd $notes_home && fzf)
+        nvim "$notes_home/$note" -c ":8"
+        ;;
     *)
         echo "Usage: $0 new|edit|find"
 esac
