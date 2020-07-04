@@ -1,0 +1,4 @@
+ripgrep
+fd
+fzf
+nvim
