@@ -86,3 +86,8 @@ prepend () {
 }
 
 alias dc="docker-compose"
+
+
+background () {
+    screen sh -c "$@"
+}
