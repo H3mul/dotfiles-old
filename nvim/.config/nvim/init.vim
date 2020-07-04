@@ -5,5 +5,6 @@ let $NVIM_HOME=expand("$HOME/.config/nvim")
 
 runtime plugins.vim
 runtime fzf-floating-window.vim
+runtime zettel.vim
 runtime settings.vim
 runtime keybinds.vim
