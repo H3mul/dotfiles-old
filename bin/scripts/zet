@@ -1,7 +1,7 @@
 #!/bin/bash
 
-template="$ZETTEL_HOME/template.md"
-notes_home="$ZETTEL_HOME/zettels"
+template="$ZETTEL_HOME/../template.md"
+notes_home="$ZETTEL_HOME"
 
 id_tpl="id:"
 date_tpl="date:"
@@ -33,20 +33,27 @@ create_note () {
     echo $note_file
 }
 
+list_notes () {
+    echo $(cd $notes_home && \
+        fzf --preview="bat --color=always --decorations=never $PWD/{}")
+}
+
+save_notes () {
+    (cd $notes_home && git add . && git commit -m "note save" > /dev/null 2>&1 \
+        || echo "Save unsuccessfull" > /dev/tty)
+}
+
 case $1 in
-    "new")
+    "--no-edit"|"--noedit")
+        noedit=true
         shift 1
+esac
 
-        case $1 in
-            "")
-                echo "Note title required."
-                exit
-                ;;
-            "--no-edit"|"--noedit")
-                noedit=true
-                shift 1
-        esac
+action=$1
+shift 1
 
+case $action in
+    "new")
         note_file=$(create_note "$*")
         if [[ $noedit != true ]];then
             nvim $note_file -c "$"
@@ -56,10 +63,14 @@ case $1 in
 
         exit
         ;;
-    "find")
-        note=$(cd $notes_home && fzf)
-        nvim "$notes_home/$note" -c ":8"
+    "save")
+        save_notes
         ;;
     *)
-        echo "Usage: $0 new|edit|find"
+        note=$(list_notes)
+        if [ -z "$note" ]; then
+            exit
+        fi
+        nvim "$notes_home/$note" -c ":8"
+        ;;
 esac
