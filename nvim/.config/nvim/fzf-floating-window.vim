@@ -1,4 +1,3 @@
-let g:fzf_preview_window = 'right:50%'
 let g:fzf_layout = { 'window': 'call Centered_floating_window()' }
 
 if &termguicolors

@@ -6,10 +6,17 @@ xmap <Leader>f [fzf-p]
 nmap <Leader>g [git]
 xmap <Leader>g [git]
 
+nmap <Leader>z [zet]
+xmap <Leader>z [zet]
+
+
 nnoremap <silent> [fzf-p]p     :<C-u>Files<CR>
 
 nnoremap <silent> [git]s    :<C-u>GFiles?<CR>
 nnoremap <silent> [git]c    :<C-u>GitMessenger<CR>
+
+nnoremap <silent> [zet]z    :<C-u>ZetList<CR>
+nnoremap          [zet]n    :<C-u>ZetNew
 
 " Navigate tabs
 

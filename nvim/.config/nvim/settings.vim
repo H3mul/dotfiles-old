@@ -139,3 +139,5 @@ set clipboard+=unnamedplus
 
 set ttyfast
 set lazyredraw
+
+let g:fzf_preview_window = 'right:50%'
