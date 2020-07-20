@@ -36,8 +36,8 @@ case "$1" in
                 # Default selection
                 deploylist=${cli[@]}
             else
-                # Single package selection
-                deploylist=("$1")
+                # Manual package selection
+                deploylist=( "$*" )
             fi
 esac
 
@@ -53,9 +53,18 @@ done
 # Oh My ZSH
 
 #install oh-my-zsh if not already installed
-if [ ! -d "$HOME/.oh-my-zsh" ]; then
-        echo "[+] installing oh-my-zsh..."
-        sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+if [[ " ${deploylist[@]} " =~ " zsh " ]] && [ ! -d "$HOME/.oh-my-zsh" ]; then
+    echo "[+] installing oh-my-zsh..."
+    sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+fi
+
+# install tmux plugins if not already installed
+
+if [[ " ${deploylist[@]} " =~ " tmux " ]] && [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+    echo "[+] installing TPM (tmux package manager)..."
+    git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+    echo "[+] installing TPM plugins..."
+    ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 fi
 
 #######################################
