@@ -32,6 +32,13 @@ Plug 'rhysd/git-messenger.vim'
 Plug 'machakann/vim-highlightedyank'
 Plug 'rhysd/conflict-marker.vim'
 Plug 'vimlab/split-term.vim'
+Plug 'vimwiki/vimwiki'
+Plug 'michal-h21/vim-zettel'
+Plug 'alvan/vim-closetag'
+Plug 'jiangmiao/auto-pairs'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'benmills/vimux'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 " Syntax
 Plug 'sheerun/vim-polyglot'

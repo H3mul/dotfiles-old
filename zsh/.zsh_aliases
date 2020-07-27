@@ -64,6 +64,8 @@ kc () {
     pass=""
 }
 
+alias clip="xclip -selection clipboard -rmlastnl"
+
 alias less="less -WiNS"
 
 nh () {
@@ -87,7 +89,23 @@ prepend () {
 
 alias dc="docker-compose"
 
-
 background () {
     screen sh -c "$@"
+}
+
+
+# if no tmuxp, just open tmux
+# if argument,
+
+tm () {
+    if [ -z "$1" ]; then
+        tmuxp load -y . 2>/dev/null
+
+        # No tmuxp config, just start tmux
+        if [ $? -ne 0 ]; then
+            tmux
+        fi
+    else
+        tmuxp load -y ".$1.tmuxp.yml"
+    fi
 }

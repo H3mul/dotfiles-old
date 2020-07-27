@@ -35,7 +35,7 @@ create_note () {
 
 list_notes () {
     echo $(cd $notes_home && \
-        fzf --preview="bat --color=always --decorations=never $PWD/{}")
+        fzf --preview="bat --color=always --theme Nord --decorations=never $PWD/{}")
 }
 
 save_notes () {

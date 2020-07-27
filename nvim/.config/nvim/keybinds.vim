@@ -1,5 +1,8 @@
 " Global leader based keymaps
 "
+nnoremap <SPACE> <Nop>
+let mapleader = ' '
+
 nmap <Leader>f [fzf-p]
 xmap <Leader>f [fzf-p]
 
@@ -17,6 +20,9 @@ nnoremap <silent> [git]c    :<C-u>GitMessenger<CR>
 
 nnoremap <silent> [zet]z    :<C-u>ZetList<CR>
 nnoremap          [zet]n    :<C-u>ZetNew
+
+" nnoremap [zet]n :ZettelNew<space>
+nnoremap <M-CR> :VimwikiTabnewLink<CR>
 
 " Navigate tabs
 
@@ -94,10 +100,24 @@ nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
 " Typo central
-command WQ wq
-command Wq wq
-command W w
-command Q q
+cmap WQ wq
+cmap Wq wq
+cmap W w
+cmap Q q
 
 " w!! to write with sudo even if not opened with sudo
 cmap w!! w !sudo tee >/dev/null %
+
+nmap <Leader>v [vimux]
+xmap <Leader>v [vimux]
+
+" Prompt for a command to run
+map [vimux]p :VimuxPromptCommand<CR>
+" Run last command executed by VimuxRunCommand
+map [vimux]l :VimuxRunLastCommand<CR>
+" Inspect runner pane
+map [vimux]i :VimuxInspectRunner<CR>
+" zoom runner pane
+map [vimux]z :VimuxZoomRunner<CR>
+
+nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>

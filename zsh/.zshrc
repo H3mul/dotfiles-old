@@ -164,8 +164,20 @@ export FZF_DEFAULT_OPTS='
 --color fg:252,hl:67,fg+:252,bg+:235,hl+:81
 --color info:144,prompt:161,spinner:135,pointer:135,marker:118'
 
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow -E .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_ALT_C_COMMAND='fd --type d --hidden --follow'
+export FZF_ALT_C_COMMAND='fd --type d --hidden --follow -E .git'
 
-export ZETTEL_HOME="$HOME/zettelkasten"
+export ZETTEL_HOME="$HOME/zettelkasten/zettels"
+
+export DISABLE_AUTO_TITLE='true'
+
+# Load completion modules
+autoload -Uz compinit
+
+# Flush cached completion configuration once every day
+if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
+  compinit
+else
+  compinit -C
+fi

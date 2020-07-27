@@ -4,6 +4,8 @@
 dotfiles="$(dirname "$0")"
 cd $dotfiles
 
+export NVIM_HOME="$HOME/.config/nvim"
+
 cli=(
     zsh
     nvim
@@ -41,6 +43,12 @@ case "$1" in
             fi
 esac
 
+# Set up nvim home dir if we are installing it,
+# otherwise stow will symlink the whole dir
+if [[ " ${deploylist[@]} " =~ " nvim " ]] && [ ! -d "$NVIM_HOME" ]; then
+    mkdir "$NVIM_HOME"
+fi
+
 for item in ${deploylist[@]}; do
     if [ -d "$dotfiles/$item" ]; then
         stow -R -t "${HOME}" $item 2>/dev/null && echo "[+] Deployed: $item" || echo "[-] failed: $item"
@@ -49,9 +57,6 @@ for item in ${deploylist[@]}; do
     fi
 done
 
-#######################################
-# Oh My ZSH
-
 #install oh-my-zsh if not already installed
 if [[ " ${deploylist[@]} " =~ " zsh " ]] && [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "[+] installing oh-my-zsh..."
@@ -59,12 +64,20 @@ if [[ " ${deploylist[@]} " =~ " zsh " ]] && [ ! -d "$HOME/.oh-my-zsh" ]; then
 fi
 
 # install tmux plugins if not already installed
-
 if [[ " ${deploylist[@]} " =~ " tmux " ]] && [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
     echo "[+] installing TPM (tmux package manager)..."
     git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
     echo "[+] installing TPM plugins..."
     ~/.tmux/plugins/tpm/scripts/install_plugins.sh
+fi
+
+# install vim plug manager and plugins
+if [[ " ${deploylist[@]} " =~ " nvim " ]] && [ ! -d "$NVIM_HOME/autoload/plug.vim" ]; then
+    echo "[+] installing vim plug..."
+    curl -fLo $NVIM_HOME/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    echo "[+] installing vim plugins..."
+    nvim +PlugInstall +qall
 fi
 
 #######################################
