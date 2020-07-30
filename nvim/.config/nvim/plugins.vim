@@ -39,6 +39,8 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'benmills/vimux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'Yggdroot/indentLine'
+Plug 'tpope/vim-sleuth'
 
 " Syntax
 Plug 'sheerun/vim-polyglot'

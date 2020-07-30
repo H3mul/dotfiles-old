@@ -154,4 +154,4 @@ let g:zettel_options = [{"front_matter" : {"tags" : ""},
 let g:zettel_format = '%Y%m%d%H%M%S-%title'
 let g:zettel_fzf_command = "fd --type f .md ."
 
-set timeoutlen=500
+let g:indentLine_char = '¦'
