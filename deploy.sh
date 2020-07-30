@@ -57,7 +57,15 @@ for item in ${deploylist[@]}; do
     fi
 done
 
-#install oh-my-zsh if not already installed
+
+# install yay
+if ! command -v yay &> /dev/null; then
+    echo "[+] installing yay..."
+    git clone https://aur.archlinux.org/yay.git && \
+    cd yay && makepkg -si && cd .. && rm -rf yay
+fi
+
+# install oh-my-zsh if not already installed
 if [[ " ${deploylist[@]} " =~ " zsh " ]] && [ ! -d "$HOME/.oh-my-zsh" ]; then
     echo "[+] installing oh-my-zsh..."
     sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"

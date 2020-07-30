@@ -2,3 +2,5 @@ ripgrep
 fd
 fzf
 nvim
+tmux
+tmuxp
