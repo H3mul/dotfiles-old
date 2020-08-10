@@ -2,4 +2,14 @@
 DefaultProfile=Dracula.profile
 
 [KonsoleWindow]
+SaveGeometryOnExit=false
 ShowMenuBarByDefault=false
+
+[MainWindow]
+MenuBar=Disabled
+ToolBarsMovable=Disabled
+
+[Notification Messages]
+CloseAllEmptyTabs=true
+CloseAllTabs=true
+CloseSingleTab=true
