@@ -17,7 +17,7 @@ config_user() {
     echo "$1" | grep "^user \K\w*" -oP
 }
 config_ip() {
-    echo "$1" | grep "^hostname \K[0-9.]*" -oP
+    echo "$1" | grep "^hostname \K\S*$" -oP
 }
 
 
