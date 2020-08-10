@@ -1,4 +1,3 @@
-#!/usr/bin/env xdg-open
 [Desktop Entry]
 Categories=Audio;Music;Player;AudioVideo;
 Comment[en_US]=
@@ -8,8 +7,8 @@ GenericName[en_US]=Music Player
 GenericName=Music Player
 Icon=spotify-client
 MimeType=
-Name[en_US]=Spotify
-Name=Spotify
+Name[en_US]=Spotify-Docked
+Name=Spotify-Docked
 Path=
 StartupNotify=true
 StartupWMClass=spotify
