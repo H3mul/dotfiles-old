@@ -4,3 +4,4 @@ fzf
 nvim
 tmux
 tmuxp
+ffmpegthumbnailer
