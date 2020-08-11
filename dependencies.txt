@@ -6,3 +6,9 @@ tmux
 tmuxp
 ffmpegthumbnailer
 dconf
+gnome-screenshot
+keepassxc
+fusuma
+redshift
+zsh
+konsole
