@@ -1,0 +1,11 @@
+[desktop]
+computer-icon-visible=false
+home-icon-visible=false
+show-orphaned-desktop-icons=false
+volumes-visible=false
+
+[window-state]
+geometry='800x550+48+74'
+maximized=false
+sidebar-bookmark-breakpoint=0
+start-with-sidebar=true

@@ -1,0 +1,151 @@
+[/]
+alttab-switcher-delay=50
+alttab-switcher-style='icons+preview'
+applet-cache-updated=1597108168
+desklet-snap-interval=25
+device-aliases=['/org/freedesktop/UPower/devices/battery_BAT0:=LGC-LGC6.73 DELL H754V84']
+enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:left:2:expo@cinnamon.org:2', 'panel1:left:3:show-desktop@cinnamon.org:3', 'panel1:left:4:separator@cinnamon.org:4', 'panel1:left:5:grouped-window-list@cinnamon.org:5', 'panel1:right:8:notifications@cinnamon.org:6', 'panel1:right:9:workspace-switcher@cinnamon.org:7', 'panel1:right:10:windows-quick-list@cinnamon.org:8', 'panel1:right:11:separator@cinnamon.org:9', 'panel1:right:12:systray@cinnamon.org:10', 'panel1:right:13:separator@cinnamon.org:11', 'panel1:right:14:removable-drives@cinnamon.org:12', 'panel1:right:15:network@cinnamon.org:13', 'panel1:right:16:sound@cinnamon.org:14', 'panel1:right:17:power@cinnamon.org:15', 'panel1:right:18:inhibit@cinnamon.org:16', 'panel1:right:19:calendar@cinnamon.org:17', 'panel1:right:20:user@cinnamon.org:18']
+enabled-desklets=@as []
+favorite-apps=['google-chrome.desktop', 'cinnamon-settings.desktop', 'nemo.desktop']
+next-applet-id=27
+panel-edit-mode=false
+panel-zone-icon-sizes='[{"panelId": 1, "left": 0, "center": 0, "right": 16}]'
+panel-zone-symbolic-icon-sizes='[{"panelId": 1, "left": 28, "center": 28, "right": 17}]'
+panels-enabled=['1:0:top']
+panels-height=['1:26']
+workspace-expo-view-as-grid=true
+workspace-osd-visible=false
+
+[cinnamon-session]
+prefer-hybrid-sleep=false
+
+[desktop/applications/terminal]
+exec='konsole'
+
+[desktop/background]
+picture-options='zoom'
+picture-uri='file:///home/hemul/Pictures/Wallpapers/oKEyh9P.jpg'
+
+[desktop/background/slideshow]
+delay=15
+image-source='directory:///home/hemul/Pictures/Wallpapers'
+slideshow-enabled=false
+
+[desktop/interface]
+cursor-blink-time=1200
+cursor-size=17
+cursor-theme='xcursor-breeze-snow'
+gtk-theme='Nordic-darker'
+icon-theme='Papirus-Dark'
+scaling-factor=uint32 0
+
+[desktop/keybindings]
+custom-list=['custom2', 'custom1', 'custom0']
+looking-glass-keybinding=@as []
+
+[desktop/keybindings/custom-keybindings/custom0]
+binding=@as []
+command='konsole'
+name='Launch Konsole'
+
+[desktop/keybindings/custom-keybindings/custom1]
+binding=@as []
+command='google-chrome-stable'
+name='Launch Chrome'
+
+[desktop/keybindings/custom-keybindings/custom2]
+binding=['<Super>k']
+command='keepassxc %U'
+name='Launch Keepass'
+
+[desktop/keybindings/media-keys]
+logout=@as []
+screensaver=['XF86ScreenSaver', '<Primary><Alt>Delete']
+terminal=['<Super>t']
+www=['<Super>c']
+
+[desktop/keybindings/wm]
+activate-window-menu=@as []
+move-to-workspace-1=['<Alt><Super>F1']
+move-to-workspace-2=['<Alt><Super>F2']
+move-to-workspace-3=['<Alt><Super>F3']
+move-to-workspace-4=['<Alt><Super>F4']
+move-to-workspace-5=['<Alt><Super>F5']
+move-to-workspace-6=['<Alt><Super>F6']
+push-snap-left=['<Control><Super>Left', '<Primary><Super>h']
+push-snap-right=['<Control><Super>Right', '<Primary><Super>l']
+push-tile-down=['<Super>Down']
+push-tile-left=['<Super>Left', '<Super>h']
+push-tile-right=['<Super>Right', '<Super>l']
+switch-to-workspace-1=['<Super>F1']
+switch-to-workspace-2=['<Super>F2']
+switch-to-workspace-3=['<Super>F3']
+switch-to-workspace-4=['<Super>F4']
+switch-to-workspace-5=['<Super>F5']
+switch-to-workspace-6=['<Super>F6']
+switch-to-workspace-left=['<Primary><Alt>Left', '<Primary><Alt>h']
+switch-to-workspace-right=['<Primary><Alt>Right', '<Primary><Alt>l']
+switch-to-workspace-up=['<Control><Alt>Up', '<Alt>F1', '<Super>Tab']
+
+[desktop/media-handling]
+autorun-never=false
+
+[desktop/screensaver]
+layout-group=0
+
+[desktop/sound]
+event-sounds=false
+volume-sound-enabled=true
+volume-sound-file='/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga'
+
+[desktop/wm/preferences]
+min-window-opacity=30
+mouse-button-modifier='<Alt>'
+num-workspaces=6
+theme='Nordic-darker'
+
+[muffin]
+placement-mode='automatic'
+resize-threshold=24
+
+[settings-daemon/peripherals/keyboard]
+delay=uint32 500
+numlock-state='off'
+repeat-interval=uint32 30
+
+[settings-daemon/peripherals/mouse]
+double-click=400
+drag-threshold=8
+motion-threshold=1
+natural-scroll=false
+
+[settings-daemon/peripherals/touchpad]
+clickpad-click=3
+disable-while-typing=false
+horizontal-scrolling=true
+motion-threshold=1
+natural-scroll=false
+scrolling-method=1
+
+[settings-daemon/plugins/power]
+lid-close-ac-action='suspend'
+lid-close-battery-action='suspend'
+lock-on-suspend=true
+sleep-display-ac=1800
+sleep-display-battery=600
+sleep-inactive-ac-timeout=0
+sleep-inactive-battery-timeout=1800
+
+[sounds]
+login-enabled=false
+logout-enabled=false
+notification-enabled=false
+notification-file='/usr/share/sounds/freedesktop/stereo/message.oga'
+plug-enabled=false
+switch-enabled=false
+tile-enabled=false
+unplug-enabled=false
+
+[theme]
+name='Mint-Y-Dark-Purple'
+theme-cache-updated=1597088861
