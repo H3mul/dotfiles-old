@@ -67,3 +67,7 @@ height=604
 width=1464
 x=240
 y=135
+
+[nm-applet/eap/d3b3c233-9ad1-43f8-8aec-d587af974ad4]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false

@@ -50,29 +50,32 @@ if [[ " ${deploylist[@]} " =~ " nvim " ]] && [ ! -d "$NVIM_HOME" ]; then
 fi
 
 for item in ${deploylist[@]}; do
-    if [ "$item" == "cinnamon" ]; then
+    # Skip dconf packages as literals
+    if [[ $item =~ .dconf$ ]] && [ -d "$dotfiles/$item" ]; then
+        echo "[-] $item: Error - load dconf packages without the .dconf suffix. Skipping...";
         continue 
     fi
 
+    # Stow stowable packages
     if [ -d "$dotfiles/$item" ]; then
-        stow -R -t "${HOME}" $item 2>/dev/null && echo "[+] Deployed: $item" || echo "[-] failed: $item"
-    else
-        echo "[-] package doesnt exist: $item";
+        stow -R -t "${HOME}" $item 2>/dev/null && echo "[+] $item: stow deployed" || echo "[-] $item: stow failed"
+    fi
+
+    # Load configs for dconf packages
+    if [ -d "$dotfiles/$item.dconf" ]; then
+        ./${item}.dconf/load.sh && echo "[+] $item: dconf loaded from dump" || echo "[-] $item: dconf load failed"
+    fi
+
+    if [ ! -d "$dotfiles/$item.dconf" ] && [ ! -d "$dotfiles/$item" ]; then
+        echo "[-] $item: Package not found."
     fi
 done
-
 
 # install yay
 if ! command -v yay &> /dev/null; then
     echo "[+] installing yay..."
     git clone https://aur.archlinux.org/yay.git && \
     cd yay && makepkg -si && cd .. && rm -rf yay
-fi
-
-# Load settings from cinnamon dump
-if [[ " ${deploylist[@]} " =~ " cinnamon " ]]; then
-    echo "[+] Loading Cinnamon config from dump..."
-    ./cinnamon/load.sh
 fi
 
 # install oh-my-zsh if not already installed
@@ -97,8 +100,3 @@ if [[ " ${deploylist[@]} " =~ " nvim " ]] && [ ! -d "$NVIM_HOME/autoload/plug.vi
     echo "[+] installing vim plugins..."
     nvim +PlugInstall +qall
 fi
-
-#######################################
-# Finished
-
-echo "[+] Dotfiles deploy complete!"

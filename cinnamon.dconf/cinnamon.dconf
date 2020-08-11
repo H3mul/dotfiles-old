@@ -4,10 +4,10 @@ alttab-switcher-style='icons+preview'
 applet-cache-updated=1597108168
 desklet-snap-interval=25
 device-aliases=['/org/freedesktop/UPower/devices/battery_BAT0:=LGC-LGC6.73 DELL H754V84']
-enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:left:2:expo@cinnamon.org:2', 'panel1:left:3:show-desktop@cinnamon.org:3', 'panel1:left:4:separator@cinnamon.org:4', 'panel1:left:5:grouped-window-list@cinnamon.org:5', 'panel1:right:8:notifications@cinnamon.org:6', 'panel1:right:9:workspace-switcher@cinnamon.org:7', 'panel1:right:10:windows-quick-list@cinnamon.org:8', 'panel1:right:11:separator@cinnamon.org:9', 'panel1:right:12:systray@cinnamon.org:10', 'panel1:right:13:separator@cinnamon.org:11', 'panel1:right:14:removable-drives@cinnamon.org:12', 'panel1:right:15:network@cinnamon.org:13', 'panel1:right:16:sound@cinnamon.org:14', 'panel1:right:17:power@cinnamon.org:15', 'panel1:right:18:inhibit@cinnamon.org:16', 'panel1:right:19:calendar@cinnamon.org:17', 'panel1:right:20:user@cinnamon.org:18']
+enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:left:2:expo@cinnamon.org:2', 'panel1:left:3:show-desktop@cinnamon.org:3', 'panel1:left:4:separator@cinnamon.org:4', 'panel1:left:5:grouped-window-list@cinnamon.org:5', 'panel1:right:0:notifications@cinnamon.org:6', 'panel1:right:1:workspace-switcher@cinnamon.org:7', 'panel1:right:2:windows-quick-list@cinnamon.org:8', 'panel1:right:3:separator@cinnamon.org:9', 'panel1:right:5:separator@cinnamon.org:11', 'panel1:right:7:removable-drives@cinnamon.org:12', 'panel1:right:8:network@cinnamon.org:13', 'panel1:right:9:sound@cinnamon.org:14', 'panel1:right:10:power@cinnamon.org:15', 'panel1:right:11:inhibit@cinnamon.org:16', 'panel1:right:12:calendar@cinnamon.org:17', 'panel1:right:13:user@cinnamon.org:18', 'panel1:right:4:collapsible-systray@feuerfuchs.eu:27']
 enabled-desklets=@as []
 favorite-apps=['google-chrome.desktop', 'cinnamon-settings.desktop', 'nemo.desktop']
-next-applet-id=27
+next-applet-id=28
 panel-edit-mode=false
 panel-zone-icon-sizes='[{"panelId": 1, "left": 0, "center": 0, "right": 16}]'
 panel-zone-symbolic-icon-sizes='[{"panelId": 1, "left": 28, "center": 28, "right": 17}]'
@@ -20,7 +20,7 @@ workspace-osd-visible=false
 prefer-hybrid-sleep=false
 
 [desktop/applications/terminal]
-exec='konsole'
+exec='tilix'
 
 [desktop/background]
 picture-options='zoom'
@@ -107,12 +107,14 @@ volume-sound-file='/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga'
 [desktop/wm/preferences]
 min-window-opacity=30
 mouse-button-modifier='<Alt>'
-num-workspaces=6
+num-workspaces=4
 theme='Nordic-darker'
+workspace-names=@as []
 
 [muffin]
 placement-mode='automatic'
 resize-threshold=24
+workspace-cycle=true
 
 [settings-daemon/peripherals/keyboard]
 delay=uint32 500
@@ -153,5 +155,5 @@ tile-enabled=false
 unplug-enabled=false
 
 [theme]
-name='Mint-Y-Dark-Purple'
+name='Adapta-FrostBlue2-Nokto'
 theme-cache-updated=1597088861
