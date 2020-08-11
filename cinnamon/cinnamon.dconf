@@ -40,7 +40,7 @@ icon-theme='Papirus-Dark'
 scaling-factor=uint32 0
 
 [desktop/keybindings]
-custom-list=['custom2', 'custom1', 'custom0']
+custom-list=['custom2', 'custom1', 'custom0', 'custom3']
 looking-glass-keybinding=@as []
 
 [desktop/keybindings/custom-keybindings/custom0]
@@ -58,9 +58,15 @@ binding=['<Super>k']
 command='keepassxc %U'
 name='Launch Keepass'
 
+[desktop/keybindings/custom-keybindings/custom3]
+binding=['Print']
+command='gnome-screenshot -a'
+name='Region screenshot'
+
 [desktop/keybindings/media-keys]
 logout=@as []
 screensaver=['XF86ScreenSaver', '<Primary><Alt>Delete']
+screenshot=@as []
 terminal=['<Super>t']
 www=['<Super>c']
 
