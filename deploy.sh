@@ -50,6 +50,10 @@ if [[ " ${deploylist[@]} " =~ " nvim " ]] && [ ! -d "$NVIM_HOME" ]; then
 fi
 
 for item in ${deploylist[@]}; do
+    if [ "$item" == "cinnamon" ]; then
+        continue 
+    fi
+
     if [ -d "$dotfiles/$item" ]; then
         stow -R -t "${HOME}" $item 2>/dev/null && echo "[+] Deployed: $item" || echo "[-] failed: $item"
     else
@@ -63,6 +67,12 @@ if ! command -v yay &> /dev/null; then
     echo "[+] installing yay..."
     git clone https://aur.archlinux.org/yay.git && \
     cd yay && makepkg -si && cd .. && rm -rf yay
+fi
+
+# Load settings from cinnamon dump
+if [[ " ${deploylist[@]} " =~ " cinnamon " ]]; then
+    echo "[+] Loading Cinnamon config from dump..."
+    ./cinnamon/load.sh
 fi
 
 # install oh-my-zsh if not already installed

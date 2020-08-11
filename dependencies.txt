@@ -5,3 +5,4 @@ nvim
 tmux
 tmuxp
 ffmpegthumbnailer
+dconf
