@@ -19,5 +19,8 @@ MiddleClickPasteMode=1
 MouseWheelZoomEnabled=false
 UnderlineFilesEnabled=false
 
+[Scrolling]
+ScrollBarPosition=2
+
 [Terminal Features]
 BlinkingCursorEnabled=false
