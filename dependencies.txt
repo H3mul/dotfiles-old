@@ -11,4 +11,6 @@ keepassxc
 fusuma
 redshift
 zsh
-konsole
+cava
+tilix
+zathura

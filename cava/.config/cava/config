@@ -1,0 +1,5 @@
+[output]
+method = ncurses
+
+[color]
+foreground = 'cyan'
