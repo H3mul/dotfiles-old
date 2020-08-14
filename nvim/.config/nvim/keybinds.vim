@@ -99,12 +99,6 @@ imap <F1> <nop>
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
-" Typo central
-cmap WQ wq
-cmap Wq wq
-cmap W w
-cmap Q q
-
 " w!! to write with sudo even if not opened with sudo
 cmap w!! w !sudo tee >/dev/null %
 
