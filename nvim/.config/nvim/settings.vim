@@ -145,6 +145,7 @@ let g:fzf_preview_window = 'right:50%'
 " vimwiki settings
 let g:vimwiki_list = [{"path":expand("$ZETTEL_HOME"), 'syntax': 'markdown',
                         \ 'ext': '.md', 'auto_tags': 1, 'auto_toc': 1}]
+
 let g:vimwiki_use_mouse = 1
 let g:vimwiki_auto_chdir = 1
 
@@ -155,3 +156,8 @@ let g:zettel_format = '%Y%m%d%H%M%S-%title'
 let g:zettel_fzf_command = "fd --type f .md ."
 
 let g:indentLine_char = '¦'
+
+" Fix issue with vimwiki conceal
+" https://github.com/Yggdroot/indentLine/issues/303
+let g:indentLine_concealcursor=""
+let g:indentLine_conceallevel=2
