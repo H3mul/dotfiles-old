@@ -33,9 +33,24 @@ create_note () {
     echo $note_file
 }
 
+open_note () {
+    note="$1"
+    if [ -z "$note" ]; then
+        exit
+    fi
+    nvim "$notes_home/$note" -c ":8"
+}
+
+note_fzf () {
+    fzf --preview="bat --color=always --theme Nord --decorations=never $PWD/{}"
+}
+
 list_notes () {
-    echo $(cd $notes_home && \
-        fzf --preview="bat --color=always --theme Nord --decorations=never $PWD/{}")
+    echo $(cd $notes_home && fd --type f --follow -E .git --no-ignore-vcs | note_fzf)
+}
+
+grep_notes () {
+    echo $(cd $notes_home && rg "$*" -l --hidden --smart-case | note_fzf)
 }
 
 save_notes () {
@@ -66,11 +81,10 @@ case $action in
     "save")
         save_notes
         ;;
+    "search")
+        open_note $(grep_notes "$*")
+        ;;
     *)
-        note=$(list_notes)
-        if [ -z "$note" ]; then
-            exit
-        fi
-        nvim "$notes_home/$note" -c ":8"
+        open_note $(list_notes)
         ;;
 esac
