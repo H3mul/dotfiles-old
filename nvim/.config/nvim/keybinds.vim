@@ -13,7 +13,7 @@ nmap <Leader>z [zet]
 xmap <Leader>z [zet]
 
 
-nnoremap <silent> [fzf-p]p     :<C-u>Files<CR>
+nnoremap <silent> [fzf-p]p  :<C-u>Files<CR>
 
 nnoremap <silent> [git]s    :<C-u>GFiles?<CR>
 nnoremap <silent> [git]c    :<C-u>GitMessenger<CR>
@@ -115,3 +115,5 @@ map [vimux]i :VimuxInspectRunner<CR>
 map [vimux]z :VimuxZoomRunner<CR>
 
 nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
+
+map <leader>p :read !date<CR>
