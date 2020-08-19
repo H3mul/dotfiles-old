@@ -13,7 +13,8 @@ Plug 'mhinz/vim-startify'
 
 " Utility
 Plug 'ciaranm/securemodelines'
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
+Plug 'liuchengxu/vista.vim'
 Plug 'preservim/nerdtree'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-commentary'
@@ -41,6 +42,7 @@ Plug 'benmills/vimux'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-sleuth'
+Plug 'kevinhwang91/rnvimr'
 
 " Syntax
 Plug 'sheerun/vim-polyglot'

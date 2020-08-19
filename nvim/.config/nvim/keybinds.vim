@@ -88,7 +88,7 @@ imap <F4> <C-O>:%!python -m json.tool<CR>
 nnoremap <leader>t :%s/\s\+$//e <CR>
 
 " tagbar shortcut
-nmap <F9> :TagbarToggle<CR>
+nmap <F9> :Vista!!<CR>
 nmap <F8> :NERDTreeToggle<CR>
 
 " Dont show help on F1
@@ -116,4 +116,12 @@ map [vimux]z :VimuxZoomRunner<CR>
 
 nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
 
-map <leader>p :read !date<CR>
+nnoremap <silent> <leader>p :read !date<CR>
+
+" Ranger keybinds
+nmap <Leader>m [ranger]
+xmap <Leader>m [ranger]
+
+nnoremap <silent> [ranger]o :RnvimrToggle<CR>
+tnoremap <silent> [ranger]o <C-\><C-n>:RnvimrToggle<CR>
+tnoremap <silent> [ranger]i <C-\><C-n>:RnvimrResize<CR>
