@@ -38,7 +38,7 @@ open_note () {
     if [ -z "$note" ]; then
         exit
     fi
-    nvim "$notes_home/$note" -c ":8"
+    nvim "+norm G$" "$notes_home/$note"
 }
 
 note_fzf () {
