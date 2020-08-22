@@ -40,11 +40,11 @@ sidebar-sections=['GthFileProperties:expanded', 'GthFileComment:expanded', 'GthF
 sidebar-visible=true
 sort-inverse=false
 sort-type='file::mtime'
-startup-current-file='file:///home/hemul/Pictures/Screenshot%20from%202020-08-10%2019-41-24.png'
-startup-location='file:///home/hemul/Pictures'
+startup-current-file=''
+startup-location=''
 statusbar-visible=true
 thumbnail-list-visible=true
-viewer-sidebar='tools'
+viewer-sidebar='hidden'
 
 [gthumb/data-migration]
 catalogs-2-10=true
@@ -67,6 +67,30 @@ height=604
 width=1464
 x=240
 y=135
+
+[nm-applet/eap/46042dbd-1913-4b88-9a8b-93936af21f08]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/47f5421c-9275-43a0-a56d-793c5dd84599]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/54839da1-6f31-4283-8c7a-22f8a60cb7a5]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/65c417ef-18ed-4349-814c-2bcd78275114]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/6a67a426-6177-4436-899f-ce5071808080]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/875eb479-33ee-4cb3-ab87-1335d0e5d38b]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
 
 [nm-applet/eap/d3b3c233-9ad1-43f8-8aec-d587af974ad4]
 ignore-ca-cert=false

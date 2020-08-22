@@ -1,23 +1,60 @@
 [/]
-alttab-switcher-delay=50
+alttab-minimized-aware=true
+alttab-switcher-delay=0
+alttab-switcher-show-all-workspaces=false
 alttab-switcher-style='icons+preview'
 applet-cache-updated=1597108168
+bring-windows-to-current-workspace=true
+command-history=['gotop', 'htop']
 desklet-snap-interval=25
+desktop-effects-close-effect='traditional'
+desktop-effects-close-time=120
+desktop-effects-close-transition='easeOutQuad'
+desktop-effects-map-effect='traditional'
+desktop-effects-map-time=100
+desktop-effects-map-transition='easeOutQuad'
+desktop-effects-maximize-effect='none'
+desktop-effects-maximize-time=100
+desktop-effects-maximize-transition='easeInExpo'
+desktop-effects-minimize-effect='traditional'
+desktop-effects-minimize-time=160
+desktop-effects-minimize-transition='easeInQuad'
+desktop-effects-style='cinnamon'
+desktop-effects-tile-effect='none'
+desktop-effects-tile-time=100
+desktop-effects-tile-transition='easeInQuad'
+desktop-effects-unmaximize-effect='none'
+desktop-effects-unmaximize-time=100
+desktop-effects-unmaximize-transition='easeNone'
 device-aliases=['/org/freedesktop/UPower/devices/battery_BAT0:=LGC-LGC6.73 DELL H754V84']
-enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:left:2:expo@cinnamon.org:2', 'panel1:left:3:show-desktop@cinnamon.org:3', 'panel1:left:4:separator@cinnamon.org:4', 'panel1:left:5:grouped-window-list@cinnamon.org:5', 'panel1:right:0:notifications@cinnamon.org:6', 'panel1:right:1:workspace-switcher@cinnamon.org:7', 'panel1:right:2:windows-quick-list@cinnamon.org:8', 'panel1:right:3:separator@cinnamon.org:9', 'panel1:right:5:separator@cinnamon.org:11', 'panel1:right:7:removable-drives@cinnamon.org:12', 'panel1:right:8:network@cinnamon.org:13', 'panel1:right:9:sound@cinnamon.org:14', 'panel1:right:10:power@cinnamon.org:15', 'panel1:right:11:inhibit@cinnamon.org:16', 'panel1:right:12:calendar@cinnamon.org:17', 'panel1:right:13:user@cinnamon.org:18', 'panel1:right:4:collapsible-systray@feuerfuchs.eu:27']
+enabled-applets=['panel1:left:0:menu@cinnamon.org:0', 'panel1:left:1:separator@cinnamon.org:1', 'panel1:left:5:grouped-window-list@cinnamon.org:5', 'panel1:right:1:notifications@cinnamon.org:6', 'panel1:right:5:workspace-switcher@cinnamon.org:7', 'panel1:right:6:windows-quick-list@cinnamon.org:8', 'panel1:right:7:separator@cinnamon.org:9', 'panel1:right:9:separator@cinnamon.org:11', 'panel1:right:10:removable-drives@cinnamon.org:12', 'panel1:right:11:network@cinnamon.org:13', 'panel1:right:12:sound@cinnamon.org:14', 'panel1:right:13:power@cinnamon.org:15', 'panel1:right:14:inhibit@cinnamon.org:16', 'panel1:right:15:calendar@cinnamon.org:17', 'panel1:right:16:user@cinnamon.org:18', 'panel1:right:8:collapsible-systray@feuerfuchs.eu:27', 'panel1:right:2:sysmonitor@orcus:28', 'panel1:right:3:download-and-upload-speed@cardsurf:31', 'panel1:right:4:separator@cinnamon.org:32']
 enabled-desklets=@as []
+enabled-extensions=['!transparent-panels@germanfr']
 favorite-apps=['google-chrome.desktop', 'cinnamon-settings.desktop', 'nemo.desktop']
-next-applet-id=28
+next-applet-id=33
 panel-edit-mode=false
 panel-zone-icon-sizes='[{"panelId": 1, "left": 0, "center": 0, "right": 16}]'
 panel-zone-symbolic-icon-sizes='[{"panelId": 1, "left": 28, "center": 28, "right": 17}]'
 panels-enabled=['1:0:top']
 panels-height=['1:26']
+show-media-keys-osd='medium'
 workspace-expo-view-as-grid=true
 workspace-osd-visible=false
 
 [cinnamon-session]
 prefer-hybrid-sleep=false
+
+[desktop/a11y/keyboard]
+bouncekeys-delay=300
+mousekeys-accel-time=300
+mousekeys-init-delay=300
+mousekeys-max-speed=10
+slowkeys-delay=300
+
+[desktop/a11y/mouse]
+dwell-threshold=10
+dwell-time=1.2
+secondary-click-time=1.2
 
 [desktop/applications/terminal]
 exec='tilix'
@@ -40,7 +77,7 @@ icon-theme='Papirus-Dark'
 scaling-factor=uint32 0
 
 [desktop/keybindings]
-custom-list=['custom2', 'custom1', 'custom0', 'custom3']
+custom-list=['custom4', 'custom2', 'custom1', 'custom0', 'custom3', 'custom5', 'custom6']
 looking-glass-keybinding=@as []
 
 [desktop/keybindings/custom-keybindings/custom0]
@@ -60,8 +97,23 @@ name='Launch Keepass'
 
 [desktop/keybindings/custom-keybindings/custom3]
 binding=['Print']
-command='gnome-screenshot -a'
+command='gnome-screenshot -a -c'
 name='Region screenshot'
+
+[desktop/keybindings/custom-keybindings/custom4]
+binding=['<Shift><Super>i']
+command='place_window.sh --size 0.5 0.7 --align r b'
+name='Video Window Placement'
+
+[desktop/keybindings/custom-keybindings/custom5]
+binding=['<Shift><Super>y']
+command='place_window.sh --size 0.6 1 --align l t'
+name='Window 60% Left'
+
+[desktop/keybindings/custom-keybindings/custom6]
+binding=['<Shift><Super>o']
+command='place_window.sh --size 0.6 1 --align r t'
+name='Window 60% Right'
 
 [desktop/keybindings/media-keys]
 logout=@as []
@@ -72,6 +124,11 @@ www=['<Super>c']
 
 [desktop/keybindings/wm]
 activate-window-menu=@as []
+minimize=['<Alt>F3']
+move-to-monitor-down=['<Super><Shift>Down', '<Alt><Super>j']
+move-to-monitor-left=['<Super><Shift>Left', '<Alt><Super>h']
+move-to-monitor-right=['<Super><Shift>Right', '<Alt><Super>l']
+move-to-monitor-up=['<Super><Shift>Up', '<Alt><Super>k']
 move-to-workspace-1=['<Alt><Super>F1']
 move-to-workspace-2=['<Alt><Super>F2']
 move-to-workspace-3=['<Alt><Super>F3']
@@ -80,9 +137,10 @@ move-to-workspace-5=['<Alt><Super>F5']
 move-to-workspace-6=['<Alt><Super>F6']
 push-snap-left=['<Control><Super>Left', '<Primary><Super>h']
 push-snap-right=['<Control><Super>Right', '<Primary><Super>l']
-push-tile-down=['<Super>Down']
-push-tile-left=['<Super>Left', '<Super>h']
-push-tile-right=['<Super>Right', '<Super>l']
+push-tile-down=['<Super>Down', '<Shift><Super>j']
+push-tile-left=['<Super>Left', '<Shift><Super>h']
+push-tile-right=['<Super>Right', '<Shift><Super>l']
+push-tile-up=['<Super>Up', '<Shift><Super>k']
 switch-to-workspace-1=['<Super>F1']
 switch-to-workspace-2=['<Super>F2']
 switch-to-workspace-3=['<Super>F3']
@@ -101,13 +159,18 @@ layout-group=0
 
 [desktop/sound]
 event-sounds=false
+maximum-volume=125
 volume-sound-enabled=true
 volume-sound-file='/usr/share/sounds/freedesktop/stereo/audio-volume-change.oga'
 
 [desktop/wm/preferences]
+action-middle-click-titlebar='none'
+action-scroll-titlebar='shade'
+button-layout=':minimize,maximize,close'
+focus-mode='click'
 min-window-opacity=30
 mouse-button-modifier='<Alt>'
-num-workspaces=4
+num-workspaces=5
 theme='Nordic-darker'
 workspace-names=@as []
 
@@ -129,9 +192,12 @@ natural-scroll=false
 
 [settings-daemon/peripherals/touchpad]
 clickpad-click=3
+custom-acceleration=false
+custom-threshold=false
 disable-while-typing=false
 horizontal-scrolling=true
-motion-threshold=1
+motion-acceleration=5.4902807775377971
+motion-threshold=10
 natural-scroll=false
 scrolling-method=1
 

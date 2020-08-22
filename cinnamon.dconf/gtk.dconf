@@ -1,3 +1,7 @@
+[settings/color-chooser]
+custom-colors=[(0.75, 0.25, 0.25, 0.0), (0.0, 0.0, 0.0, 0.0), (0.36862745098039218, 0.0, 0.0, 1.0)]
+selected-color=(true, 0.75, 0.25, 0.25, 0.0)
+
 [settings/file-chooser]
 date-format='regular'
 location-mode='path-bar'
@@ -9,5 +13,5 @@ sort-column='modified'
 sort-directories-first=false
 sort-order='descending'
 type-format='category'
-window-position=(552, 103)
+window-position=(0, 26)
 window-size=(1368, 822)

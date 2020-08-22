@@ -5,7 +5,7 @@ show-orphaned-desktop-icons=false
 volumes-visible=false
 
 [window-state]
-geometry='800x550+48+74'
+geometry='800x550+977+159'
 maximized=false
 sidebar-bookmark-breakpoint=0
 start-with-sidebar=true
