@@ -28,14 +28,19 @@ resize-with-right-button=true
 
 [gnome-screenshot]
 border-effect='none'
+delay=1
 include-border=true
 include-pointer=false
 last-save-directory='file:///home/hemul/Pictures'
 
 [gthumb/browser]
+browser-sidebar-width=285
 fullscreen-sidebar='hidden'
 fullscreen-thumbnails-visible=false
+go-to-last-location=true
 maximized=false
+properties-visible=false
+scroll-action='zoom'
 sidebar-sections=['GthFileProperties:expanded', 'GthFileComment:expanded', 'GthFileDetails:expanded', 'GthImageHistogram:expanded']
 sidebar-visible=true
 sort-inverse=false
@@ -43,17 +48,52 @@ sort-type='file::mtime'
 startup-current-file=''
 startup-location=''
 statusbar-visible=true
-thumbnail-list-visible=true
+thumbnail-list-visible=false
+use-startup-location=false
 viewer-sidebar='hidden'
+window-height=810
+window-width=1363
 
 [gthumb/data-migration]
 catalogs-2-10=true
 
 [gthumb/general]
-active-extensions=['23hq', 'bookmarks', 'burn_disc', 'catalogs', 'change_date', 'comments', 'contact_sheet', 'convert_format', 'desktop_background', 'edit_metadata', 'exiv2_tools', 'facebook', 'file_manager', 'find_duplicates', 'flicker', 'gstreamer_tools', 'gstreamer_utils', 'image_print', 'image_rotation', 'importer', 'jpeg_utils', 'list_tools', 'oauth', 'photo_importer', 'picasaweb', 'raw_files', 'red_eye_removal', 'rename_series', 'resize_images', 'search', 'selections', 'slideshow', 'terminal', 'webalbums']
+active-extensions=['resize_images', 'image_print', 'webalbums', 'search', 'list_tools', 'convert_format', 'exiv2_tools', 'flicker', 'edit_metadata', 'find_duplicates', 'rename_series', '23hq', 'photo_importer', 'raw_files', 'gstreamer_tools', 'catalogs', 'desktop_background', 'change_date', 'selections', 'contact_sheet', 'image_rotation', 'picasaweb', 'bookmarks', 'facebook', 'terminal', 'file_manager', 'red_eye_removal', 'comments', 'slideshow']
+store-metadata-in-files=true
+
+[gthumb/image-print]
+font-name='Sans 12'
+footer-font-name='sans 8'
+header-font-name='sans Bold 12'
 
 [gthumb/image-viewer]
 histogram-scale='linear'
+zoom-change='fit-width'
+zoom-quality='low'
+
+[gthumb/pixbuf-savers/jpeg]
+default-ext='jpeg'
+optimize=true
+progressive=false
+quality=85
+smoothing=0
+
+[gthumb/pixbuf-savers/png]
+compression-level=6
+
+[gthumb/pixbuf-savers/tga]
+rle-compression=true
+
+[gthumb/pixbuf-savers/tiff]
+compression='deflate'
+default-ext='tiff'
+horizontal-resolution=72
+vertical-resolution=72
+
+[gthumb/pixbuf-savers/webp]
+lossless=false
+method=4
+quality=75
 
 [libgnomekbd/desktop]
 group-per-window=true
@@ -67,6 +107,10 @@ height=604
 width=1464
 x=240
 y=135
+
+[nm-applet/eap/44667089-256c-470f-a41f-32eac8ce5871]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
 
 [nm-applet/eap/46042dbd-1913-4b88-9a8b-93936af21f08]
 ignore-ca-cert=false
@@ -89,6 +133,14 @@ ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
 [nm-applet/eap/875eb479-33ee-4cb3-ab87-1335d0e5d38b]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/892aa36a-b945-4f04-abe6-6421b0d6efab]
+ignore-ca-cert=false
+ignore-phase2-ca-cert=false
+
+[nm-applet/eap/ca78eb33-5887-4baf-ad3d-da879999f223]
 ignore-ca-cert=false
 ignore-phase2-ca-cert=false
 
