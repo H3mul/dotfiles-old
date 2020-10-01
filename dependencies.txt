@@ -16,3 +16,4 @@ tilix
 zathura
 ranger
 python-pynvim
+neovim-remote
