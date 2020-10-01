@@ -3,6 +3,8 @@ if [[ -f ~/.zsh_local ]]; then
     source ~/.zsh_local
 fi
 
+source ~/.profile
+
 zsh_plugin_home=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/
 zsh_plugin () {
     if [[ -z $1 ]]; then; return; fi;
@@ -152,9 +154,6 @@ PATH="$HOME/.node/bin:$PATH"
 export NODE_PATH="$HOME/.node/lib/node_modules"
 export NPM_CONFIG_PREFIX="$HOME/.node"
 
-# add scripts to path
-PATH="$HOME/scripts:$PATH"
-
 set -o ignoreeof
 
 source /usr/share/fzf/key-bindings.zsh
@@ -180,4 +179,8 @@ if [[ -n ~/.zcompdump(#qN.mh+24) ]]; then
   compinit
 else
   compinit -C
+fi
+
+if [[ $TILIX_ID ]]; then
+        source /etc/profile.d/vte.sh
 fi

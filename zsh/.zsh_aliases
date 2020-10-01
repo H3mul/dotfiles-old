@@ -109,3 +109,6 @@ tm () {
         tmuxp load -y ".$1.tmuxp.yml"
     fi
 }
+
+alias wifi-monitor="watch -c 'nmcli -c yes -f \"CHAN,BARS,SIGNAL,SSID\" d w | sort -k 1.6 -n'"
+alias ncdu="ncdu --color dark"
