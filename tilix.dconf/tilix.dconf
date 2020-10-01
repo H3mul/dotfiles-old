@@ -1,7 +1,13 @@
 [/]
 copy-on-select=true
+middle-click-close=true
+new-instance-mode='new-window'
+prompt-on-close=false
 prompt-on-close-process=false
+prompt-on-new-session=false
+quake-hide-headerbar=false
 quake-specific-monitor=0
+sidebar-on-right=true
 terminal-title-style='none'
 theme-variant='system'
 unsafe-paste-alert=true
@@ -23,6 +29,18 @@ session-switch-to-terminal-7='disabled'
 session-switch-to-terminal-8='disabled'
 session-switch-to-terminal-9='disabled'
 session-switch-to-terminal-down='<Alt>Down'
+win-switch-to-next-session='<Primary>Page_Up'
+win-switch-to-previous-session='<Primary>Page_Down'
+win-switch-to-session-0='<Alt>parenright'
+win-switch-to-session-1='<Alt>exclam'
+win-switch-to-session-2='<Alt>at'
+win-switch-to-session-3='<Alt>numbersign'
+win-switch-to-session-4='<Alt>dollar'
+win-switch-to-session-5='<Alt>percent'
+win-switch-to-session-6='<Alt>asciicircum'
+win-switch-to-session-7='<Alt>ampersand'
+win-switch-to-session-8='<Alt>asterisk'
+win-switch-to-session-9='<Alt>parenleft'
 
 [profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
 background-color='#2E3440'
@@ -36,5 +54,5 @@ foreground-color='#D8DEE9'
 highlight-colors-set=false
 palette=['#3B4252', '#BF616A', '#A3BE8C', '#EBCB8B', '#81A1C1', '#B48EAD', '#88C0D0', '#E5E9F0', '#4C566A', '#BF616A', '#A3BE8C', '#EBCB8B', '#81A1C1', '#B48EAD', '#8FBCBB', '#ECEFF4']
 use-system-font=false
-use-theme-colors=true
+use-theme-colors=false
 visible-name='Default'
