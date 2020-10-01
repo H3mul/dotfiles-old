@@ -2,13 +2,13 @@
 
 SCREEN=$(echo $DISPLAY | grep -oP "\d*")
 
-# SCREEN_W=$(xrandr | grep "Screen $SCREEN" | awk '{print $8}' | grep -oP "\d*")
-# SCREEN_H=$(xrandr | grep "Screen $SCREEN" | awk '{print $10}' | grep -oP "\d*")
-SCREEN_W=4080
-SCREEN_H=2348
+SCREEN_W=$(xrandr | grep "Screen $SCREEN" | awk '{print $8}' | grep -oP "\d*")
+SCREEN_H=$(xrandr | grep "Screen $SCREEN" | awk '{print $10}' | grep -oP "\d*")
+# SCREEN_W=4080
+# SCREEN_H=2348
 
 # X_OFFSET=-60
-X_OFFSET=-60
+X_OFFSET=0
 Y_OFFSET=0
 
 round() {
@@ -25,25 +25,47 @@ set_window () {
     W=$(round "$SCREEN_W * $W_FACTOR")
     H=$(round "$SCREEN_H * $H_FACTOR")
 
-    [[ $RIGHT == 1 ]] && X=$(round "$SCREEN_W - $W") || X=0
-    [[ $TOP   == 0 ]] && Y=$(round "$SCREEN_H - $H") || Y=0
+    case "$RIGHT" in
+        -1)
+            X=-1
+            ;;
+        1)
+            X=$(round "$SCREEN_W - $W")
+            ;;
+        0)
+            X=0
+    esac
+    case "$TOP" in
+        -1)
+            Y=-1
+            ;;
+        0)
+            Y=$(round "$SCREEN_H - $H")
+            ;;
+        1)
+            Y=0
+    esac
 
-    REAL_X=$(round "$X + $X_OFFSET")
-    REAL_Y=$(round "$Y + $Y_OFFSET")
+    # [[ $RIGHT == 1 ]] && X=$(round "$SCREEN_W - $W") || X=0
+    # [[ $TOP   == 0 ]] && Y=$(round "$SCREEN_H - $H") || Y=0
 
+    [[ $X -ge 0 ]] && REAL_X=$(round "$X + $X_OFFSET") || REAL_X=-1
+    [[ $Y -ge 0 ]] && REAL_Y=$(round "$Y + $Y_OFFSET") || REAL_Y=-1
+
+    echo $REAL_X, $REAL_Y;
     wmctrl -r :ACTIVE: -b remove,maximized_vert,maximized_horz && \
         wmctrl -r :ACTIVE: -e 0,$REAL_X,$REAL_Y,$W,$H
 }
 
-if [ "$#" -ne 6 ]; then
+if [ "$1" == "-h" ]; then
     echo "Usage: $0 --align [<r|right> or <l|left>],[<t|top> or <b|bottom>] --size <x-percentage>,<y-percentage>"
     exit
 fi
 
 W_FACTOR=0
 H_FACTOR=0
-RIGHT=0
-TOP=0
+RIGHT=-1
+TOP=-1
 
 parse_align () {
     case "$1" in
