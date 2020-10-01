@@ -125,3 +125,5 @@ xmap <Leader>m [ranger]
 nnoremap <silent> [ranger]o :RnvimrToggle<CR>
 tnoremap <silent> [ranger]o <C-\><C-n>:RnvimrToggle<CR>
 tnoremap <silent> [ranger]i <C-\><C-n>:RnvimrResize<CR>
+
+nnoremap gO :silent !xdg-open <cfile><CR>

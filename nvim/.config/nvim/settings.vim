@@ -176,3 +176,5 @@ let g:rnvimr_enable_picker = 1
 " Disable a border for floating window
 let g:rnvimr_draw_border = 1
 let g:rnvimr_presets = [{'width': 0.800, 'height': 0.800}]
+
+au Bufnewfile,bufRead *.pm,*.t,*.pl set filetype=perl

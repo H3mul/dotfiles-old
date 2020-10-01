@@ -43,6 +43,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-sleuth'
 Plug 'kevinhwang91/rnvimr'
+Plug 'voldikss/vim-floaterm'
 
 " Syntax
 Plug 'sheerun/vim-polyglot'
