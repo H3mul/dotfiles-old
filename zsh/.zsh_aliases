@@ -103,7 +103,7 @@ tm () {
 
         # No tmuxp config, just start tmux
         if [ $? -ne 0 ]; then
-            tmux
+            tmux attach || tmux new
         fi
     else
         tmuxp load -y ".$1.tmuxp.yml"

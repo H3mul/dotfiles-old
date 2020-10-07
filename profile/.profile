@@ -1,5 +1,3 @@
-export EDITOR=/usr/bin/nano
-
 export PATH=${PATH}:/opt/android-sdk/platform-tools
 export PATH=${PATH}:/opt/android-sdk/build-tools
 export PATH=${PATH}:$HOME/scripts
