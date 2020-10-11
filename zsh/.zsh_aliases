@@ -19,8 +19,13 @@ timestamp () {
 alias grepr="grep -rni"
 
 calc () {
-    cmd="print($@)"
-    python -c $cmd
+    import="from math import *;"
+    if [ -z "$*" ]; then
+        python -i -c "$import"
+    else
+        cmd="print($@)"
+        python -c "$import $cmd"
+    fi
 }
 
 ds () {
@@ -106,9 +111,15 @@ tm () {
             tmux attach || tmux new
         fi
     else
-        tmuxp load -y ".$1.tmuxp.yml"
+        profile=".$1.tmuxp.yml"
+        if [ ! -f $profile ]; then
+            profile="$HOME/.tmuxp/.$1.tmuxp.yml"
+        fi
+        tmuxp load -y $profile
     fi
 }
 
 alias wifi-monitor="watch -c 'nmcli -c yes -f \"CHAN,BARS,SIGNAL,SSID\" d w | sort -k 1.6 -n'"
 alias ncdu="ncdu --color dark"
+
+alias sympy='python -i -c "from sympy import *; init_printing()"'
