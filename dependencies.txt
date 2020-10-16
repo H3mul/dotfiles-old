@@ -17,3 +17,5 @@ zathura
 ranger
 python-pynvim
 neovim-remote
+epy
+bpytop
