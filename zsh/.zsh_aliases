@@ -19,7 +19,7 @@ timestamp () {
 alias grepr="grep -rni"
 
 calc () {
-    import="from math import *;"
+    import="from math import *; from statistics import *;"
     if [ -z "$*" ]; then
         python -i -c "$import"
     else
@@ -111,10 +111,12 @@ tm () {
             tmux attach || tmux new
         fi
     else
-        profile=".$1.tmuxp.yml"
-        if [ ! -f $profile ]; then
-            profile="$HOME/.tmuxp/.$1.tmuxp.yml"
-        fi
+        tmuxp_file=".$1.tmuxp.yml"
+
+        profile="$tmuxp_file"
+        [ ! -f $profile ] && profile=".tmuxp/.$1.tmuxp.yml"
+        [ ! -f $profile ] && profile="$HOME/.tmuxp/.$1.tmuxp.yml"
+
         tmuxp load -y $profile
     fi
 }
