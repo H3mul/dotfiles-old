@@ -125,3 +125,5 @@ alias wifi-monitor="watch -c 'nmcli -c yes -f \"CHAN,BARS,SIGNAL,SSID\" d w | so
 alias ncdu="ncdu --color dark"
 
 alias sympy='python -i -c "from sympy import *; init_printing()"'
+
+alias rn='ranger'
