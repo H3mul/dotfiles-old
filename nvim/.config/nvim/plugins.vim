@@ -23,7 +23,8 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'eshion/vim-sync'
 Plug 'airblade/vim-rooter'
 Plug 'junegunn/vim-easy-align'
-Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim', { 'commit': '0fe8e19' }
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'triglav/vim-visual-increment'
@@ -44,6 +45,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-sleuth'
 Plug 'kevinhwang91/rnvimr'
 Plug 'voldikss/vim-floaterm'
+Plug 'ruanyl/vim-gh-line'
 
 " Syntax
 Plug 'sheerun/vim-polyglot'

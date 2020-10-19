@@ -17,9 +17,12 @@ nnoremap <silent> [fzf-p]p  :<C-u>Files<CR>
 
 nnoremap <silent> [git]s    :<C-u>GFiles?<CR>
 nnoremap <silent> [git]c    :<C-u>GitMessenger<CR>
+nnoremap <silent> [git]l    :<C-u>BCommits<CR>
+let g:gh_line_map = '<leader>gg'
 
 nnoremap <silent> [zet]z    :<C-u>ZetList<CR>
 nnoremap          [zet]n    :<C-u>ZetNew
+
 
 " nnoremap [zet]n :ZettelNew<space>
 nnoremap <M-CR> :VimwikiTabnewLink<CR>

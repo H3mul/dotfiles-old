@@ -178,3 +178,9 @@ let g:rnvimr_draw_border = 1
 let g:rnvimr_presets = [{'width': 0.800, 'height': 0.800}]
 
 au Bufnewfile,bufRead *.pm,*.t,*.pl set filetype=perl
+
+" Github link
+let g:gh_line_map_default = 0
+let g:gh_line_blame_map_default = 0
+" Copy to clipboard
+let g:gh_open_command = 'fn() { echo "$@" | xclip -selection clipboard -rmlastnl; }; fn '
