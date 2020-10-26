@@ -48,8 +48,9 @@ def mount(name, mountpath, config):
     subprocess.run(cmd, check=True)
 
 def umount(mntpoint):
-    if os.path.ismount(path):
+    if os.path.ismount(mntpoint):
         cmd = ["fusermount3", "-u", mntpoint]
+        print("Unmounting '{}'...".format(mntpoint))
         subprocess.run(cmd, check=True)
     clean(mntpoint)
 
@@ -88,12 +89,22 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="wrapper for sshfs with a config file")
     parser.add_argument("-u", action="store_true", dest="umount", help="unmount given host or path")
+    parser.add_argument("-r", action="store_true", dest="remount", help="remount given host or path")
     parser.add_argument("host", nargs="+", help="remote name specified in the config file")
     args = parser.parse_args()
 
     mountpath = os.path.expanduser(config.get("DEFAULT", "mountpath", fallback=DEFAULT_MOUNTPATH))
 
-    if args.umount:
+    def mount_hosts():
+        for host in args.host:
+            if config.has_section(host):
+                if os.path.ismount(os.path.join(mountpath, host)):
+                    parser.error("Host '{}' is already mounted.".format(host))
+                mount(host, mountpath, config)
+            else:
+                parser.error("Section '{}' does not exist in the config file.".format(host))
+
+    def umount_hosts():
         for host in args.host:
             if os.path.isdir(host):
                 # not a host, but a path
@@ -106,12 +117,12 @@ if __name__ == "__main__":
                 umount(path)
             else:
                 parser.error("Path '{}' is not a mount point.".format(path))
+
+    if args.umount:
+        umount_hosts()
+    elif args.remount:
+        umount_hosts()
+        mount_hosts()
     else:
-        for host in args.host:
-            if config.has_section(host):
-                if os.path.ismount(os.path.join(mountpath, host)):
-                    parser.error("Host '{}' is already mounted.".format(host))
-                mount(host, mountpath, config)
-            else:
-                parser.error("Section '{}' does not exist in the config file.".format(host))
+        mount_hosts()
     cleanAll(mountpath)
