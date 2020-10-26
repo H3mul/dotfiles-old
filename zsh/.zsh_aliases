@@ -98,6 +98,8 @@ background () {
     screen sh -c "$@"
 }
 
+alias tma="tmux attach"
+
 tm () {
     if [ -z "$1" ]; then
         tmuxp load -y . 2>/dev/null
