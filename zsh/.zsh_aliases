@@ -98,17 +98,13 @@ background () {
     screen sh -c "$@"
 }
 
-
-# if no tmuxp, just open tmux
-# if argument,
-
 tm () {
     if [ -z "$1" ]; then
         tmuxp load -y . 2>/dev/null
 
         # No tmuxp config, just start tmux
         if [ $? -ne 0 ]; then
-            tmux attach || tmux new
+            tmux new
         fi
     else
         tmuxp_file=".$1.tmuxp.yml"
