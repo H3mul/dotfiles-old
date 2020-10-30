@@ -26,22 +26,28 @@ set_window () {
     H=$(round "$SCREEN_H * $H_FACTOR")
 
     case "$RIGHT" in
+        # Center
         -1)
-            X=-1
+            X=$(round "$SCREEN_W * 0.5 - $W * 0.5")
             ;;
+        # Right
         1)
             X=$(round "$SCREEN_W - $W")
             ;;
+        # Left
         0)
             X=0
     esac
     case "$TOP" in
+        # Center
         -1)
-            Y=-1
+            Y=$(round "$SCREEN_H * 0.5 - $H * 0.5")
             ;;
+        # Bottom
         0)
             Y=$(round "$SCREEN_H - $H")
             ;;
+        # Top
         1)
             Y=0
     esac
