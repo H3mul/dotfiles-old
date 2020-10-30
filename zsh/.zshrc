@@ -22,6 +22,7 @@ zsh_plugin () {
 zsh_plugin 'wfxr/forgit'
 zsh_plugin 'zsh-users/zsh-syntax-highlighting'
 zsh_plugin 'zsh-users/zsh-autosuggestions'
+zsh_plugin 'Aloxaf/fzf-tab'
 
 unset zsh_plugin
 
@@ -43,6 +44,7 @@ ZSH_THEME="hemul"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   fzf
+  fzf-tab
   systemd
   sudo
   zsh-autosuggestions
@@ -182,3 +184,5 @@ fi
 if [[ $TILIX_ID ]]; then
         source /etc/profile.d/vte.sh
 fi
+
+enable-fzf-tab
