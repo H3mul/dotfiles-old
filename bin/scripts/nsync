@@ -128,10 +128,10 @@ debug "FILE = $FILE"
 sync() {
 
     # Display sync summary
-    [ ${#SUBDIRS[@]} -ne 0 ] && subdirs="{$(join ', ' ${SUBDIRS[@]})} "
-    echo "[+] Syncing $1${subdirs}=> $2"
+    [ ${#SUBDIRS[@]} -ne 0 ] && subdirs="{$(join ', ' ${SUBDIRS[@]})}"
+    echo "[+] Syncing $1${subdirs} => $2"
 
-    cmd="rsync --progress --archive --compress --checksum --verbose --prune-empty-dirs"
+    cmd="rsync --progress --info=progress2 --archive --compress --checksum --verbose --prune-empty-dirs"
 
     # To add all files inside subdir
     # For each subdir, have to include entire chain:

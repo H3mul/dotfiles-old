@@ -89,14 +89,25 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="wrapper for sshfs with a config file")
     parser.add_argument("-u", action="store_true", dest="umount", help="unmount given host or path")
+    parser.add_argument("-a", action="store_true", dest="mountAll", help="mount all hosts in the config")
     parser.add_argument("-r", action="store_true", dest="remount", help="remount given host or path")
-    parser.add_argument("host", nargs="+", help="remote name specified in the config file")
+    parser.add_argument("host", nargs="*", help="remote name specified in the config file")
     args = parser.parse_args()
 
     mountpath = os.path.expanduser(config.get("DEFAULT", "mountpath", fallback=DEFAULT_MOUNTPATH))
 
+    # if no hosts provided, unmount all
+    hosts = args.host
+    allHosts = False
+
+    if args.mountAll:
+        hosts = config.sections()
+    elif not len(hosts):
+        parser.error("No hosts supplied to mount.")
+
+
     def mount_hosts():
-        for host in args.host:
+        for host in hosts:
             if config.has_section(host):
                 if os.path.ismount(os.path.join(mountpath, host)):
                     parser.error("Host '{}' is already mounted.".format(host))
@@ -105,17 +116,17 @@ if __name__ == "__main__":
                 parser.error("Section '{}' does not exist in the config file.".format(host))
 
     def umount_hosts():
-        for host in args.host:
+        for host in hosts:
             if os.path.isdir(host):
                 # not a host, but a path
                 path = host
             else:
                 path = os.path.join(mountpath, host)
-                if not os.path.isdir(path):
+                if not os.path.isdir(path) and not args.mountAll:
                     parser.error("Path '{}' does not exist.".format(path))
             if os.path.ismount(path):
                 umount(path)
-            else:
+            elif not args.mountAll:
                 parser.error("Path '{}' is not a mount point.".format(path))
 
     if args.umount:
