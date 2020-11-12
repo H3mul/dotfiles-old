@@ -4,8 +4,6 @@
 dotfiles="$(dirname "$0")"
 cd $dotfiles
 
-export NVIM_HOME="$HOME/.config/nvim"
-
 cli=(
     zsh
     nvim
