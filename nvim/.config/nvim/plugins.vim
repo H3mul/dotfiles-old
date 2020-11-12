@@ -46,6 +46,7 @@ Plug 'tpope/vim-sleuth'
 Plug 'kevinhwang91/rnvimr'
 Plug 'voldikss/vim-floaterm'
 Plug 'ruanyl/vim-gh-line'
+Plug 'luochen1990/rainbow'
 
 " Syntax
 Plug 'sheerun/vim-polyglot'

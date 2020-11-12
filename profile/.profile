@@ -7,5 +7,6 @@ export SSH_AUTH_SOCK="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
 export QT_QPA_PLATFORMTHEME=qt5ct
 
 export EDITOR='nvim'
+export NVIM_HOME="$HOME/.config/nvim"
 export SYSTEMD_EDITOR=$EDITOR
 
