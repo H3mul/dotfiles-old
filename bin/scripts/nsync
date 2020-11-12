@@ -103,12 +103,12 @@ COMMAND=${POSITIONAL_ARGS[0]}
 [ ! -z ${POSITIONAL_ARGS[2]} ] && FILE=${POSITIONAL_ARGS[2]}
 
 # No arg supplied servers, try env
-if [ -z "${SERVERS[@]}" ]; then
+if [ ${#SERVERS[@]} -eq 0 ]; then
     [ ! -z "$SYNC_SERVERS" ] && SERVERS+=($SYNC_SERVERS)
     [ ! -z "$SYNC_PATH" ] && SYNC_PATH="$SYNC_PATH"
 fi
 
-[ -z "${SERVERS[@]}" ] && abort "No server to sync with."
+[ ${#SERVERS[@]} -eq 0 ] && abort "No server to sync with."
 
 SUBDIRS=()
 for subdir in "${INCLUDE[@]}"; do
