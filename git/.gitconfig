@@ -15,8 +15,6 @@
     tree = log --graph --all --format=format:'%C(bold magenta)%h%C(auto)%d%C(reset) %s%C(reset)'
     for = !git-forest -a --sha --all | less -S
 
-[oh-my-zsh]
-    hide-status = 1
 [pull]
 	rebase = true
 ; [commit]
