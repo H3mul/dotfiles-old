@@ -125,3 +125,29 @@ alias ncdu="ncdu --color dark"
 alias sympy='python -i -c "from sympy import *; init_printing()"'
 
 alias rn='ranger'
+
+# Run rg and pipe into FZF with previews
+rgf() {
+    terminal_height=$(tput lines)
+    fzf_height=$(expr $terminal_height / 2)
+    fzf_preview_context=$(expr $(expr $fzf_height - 2) / 2)
+    FZF_DEFAULT_COMMAND="rg --hidden -g '!.git' --vimgrep $@ | tr ':' '\t' | cut -f 1-3" \
+        fzf -q '' --sort --preview="
+            result={}; \
+            file=\$(echo \"\$result\" | cut -f1); \
+            row=\$(echo \"\$result\" | cut -f2); \
+            [[ ! -z \"\$file\" ]] && rg --pretty --passthru $@ \"\$file\" | \
+                awk \"FNR>=(\$row - $fzf_preview_context) && FNR<=(\$row + $fzf_preview_context)\"" \
+        --with-nth=1 \
+        --preview-window="70%:wrap" \
+        --height "$fzf_height"
+    }
+
+# Edit result of rgf
+rgv() {
+    result="$(rgf $@)"
+    file=$(echo "$result" | cut -f1)
+    row=$(echo "$result" | cut -f2)
+    col=$(echo "$result" | cut -f3)
+    [ ! -z "$file" ] && vim "+call cursor($row,$col)" "$file"
+}
