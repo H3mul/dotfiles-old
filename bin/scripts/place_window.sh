@@ -22,6 +22,9 @@ set_window () {
     RIGHT=$3
     TOP=$4
 
+    echo $RIGHT
+    echo $TOP
+
     W=$(round "$SCREEN_W * $W_FACTOR")
     H=$(round "$SCREEN_H * $H_FACTOR")
 
@@ -58,7 +61,6 @@ set_window () {
     [[ $X -ge 0 ]] && REAL_X=$(round "$X + $X_OFFSET") || REAL_X=-1
     [[ $Y -ge 0 ]] && REAL_Y=$(round "$Y + $Y_OFFSET") || REAL_Y=-1
 
-    echo $REAL_X, $REAL_Y;
     wmctrl -r :ACTIVE: -b remove,maximized_vert,maximized_horz && \
         wmctrl -r :ACTIVE: -e 0,$REAL_X,$REAL_Y,$W,$H
 }
