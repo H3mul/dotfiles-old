@@ -1,9 +1,9 @@
 [Desktop Entry]
-Name=Slack
+Name=Slack HIDPI
 StartupWMClass=Slack
 Comment=Slack Desktop
 GenericName=Slack Client for Linux
-Exec=/usr/bin/slack -s %U
+Exec=/usr/bin/slack --force-device-scale-factor=1.9 -s %U
 Icon=slack
 Type=Application
 StartupNotify=true

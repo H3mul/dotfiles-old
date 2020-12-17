@@ -3,7 +3,7 @@ Name=Discord
 StartupWMClass=discord
 Comment=All-in-one voice and text chat for gamers that's free, secure, and works on both your desktop and phone.
 GenericName=Internet Messenger
-Exec=/usr/bin/discord --force-device-scale-factor=1.9
+Exec=/usr/bin/discord
 Icon=discord
 Type=Application
 Categories=Network;InstantMessaging;

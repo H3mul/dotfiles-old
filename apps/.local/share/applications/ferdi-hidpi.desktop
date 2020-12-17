@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=Ferdi
-Exec=/usr/bin/ferdi %U
+Name=Ferdi HIDPI
+Exec=/usr/bin/ferdi --force-device-scale-factor=1.9 %U
 Terminal=false
 Type=Application
 Icon=ferdi
