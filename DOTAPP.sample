@@ -1,0 +1,20 @@
+# should be the same as dir name
+appname=""
+# Organization and grouping
+tag=""
+# yay packages required for this app
+pkgdepends=()
+
+# Commands first
+pre () { }
+# Commands to run after stow install but before dconf
+stow_post () { }
+# Pass all the path, file tuples to `dconf_load`
+dconf_load_all () {
+    # dconf_load /com/gexperts/Tilix/ tilix.dconf
+}
+# Commands to run last
+post () { }
+
+# Useful vars provided:
+# $app_home: the relative "home" this app is being deployed to (usually $HOME)
