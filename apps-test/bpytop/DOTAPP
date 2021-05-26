@@ -1,0 +1,11 @@
+# should be the same as dir name
+appname="bpytop"
+# Organization and grouping
+tag=(cli)
+# yay packages required for this app
+pkg_depends=(bpytop)
+
+# Commands first
+pre () {
+    mkdir -p ~/.config/bpytop
+}

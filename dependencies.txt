@@ -3,3 +3,4 @@ git
 wget
 curl
 stow
+base-devel

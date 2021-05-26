@@ -1,0 +1,15 @@
+appname="yay"
+tag=(core cli)
+
+# This HAS to be empty:
+# Installing pkg_depends requires yay, so having depends to install would create a circular
+# dependency. Instead, add yay depends to dependencies.txt
+pkg_depends=()
+
+# Commands run after package installs
+install_post () {
+   home=$(pwd)
+   cd $(mktemp -d) && \
+      git clone https://aur.archlinux.org/yay.git && \
+      cd yay && makepkg -si --noconfirm --needed && cd .. && rm -rf yay && cd $home
+}
