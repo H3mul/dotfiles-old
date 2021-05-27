@@ -3,7 +3,7 @@ appname="zsh"
 # Organization and grouping
 tag=(cli)
 # yay packages required for this app
-pkg_depends=(zsh)
+pkg_depends=(zsh fd fzf)
 
 # plugin installer helper
 zsh_plugin () {
@@ -22,6 +22,8 @@ zsh_plugin () {
 
 # Commands run after package installs
 install_post () {
+    [ -d "$HOME/.oh-my-zsh" ] && notify_msg "oh-my-zsh already installed, skipping..." && return
+
     notify_msg "Installing oh-my-zsh..." 
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 

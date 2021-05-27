@@ -1,0 +1,19 @@
+# should be the same as dir name
+appname="neovim"
+# Organization and grouping
+tag=(cli)
+# yay packages required for this app
+pkg_depends=(neovim fzf rg)
+
+# Commands to run after stow install but before dconf
+stow_post () {
+    NVIM_HOME="$HOME/.config/nvim"
+
+    [ -d "$NVIM_HOME/autoload/plug.vim" ] && notify_msg "vim Plug already installed, skipping..." && return
+    notify_msg "Installing vim plug..."
+    curl -fLo $NVIM_HOME/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    notify_msg "Installing vim plugins..."
+    nvim +PlugInstall +qall
+    unset NVIM_HOME
+}
