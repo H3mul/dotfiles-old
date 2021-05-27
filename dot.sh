@@ -19,15 +19,17 @@ otherwise deploy your setup to a new linux box.
 
 Global Options:
 
--h, --help      Print this help and exit
--v, --verbose   Print script debug info
--i              Install packages (requires pacman)
---test          Use mock paths instead or "real" ones
+-h, --help              Print this help and exit
+-v, --verbose           Print script debug info
+-t, --test                  Use mock paths instead or "real" ones
+-S, --skip-pkg-install      Skip installing pkg dependencies listed in DOTAPP
 
 COMMAND options:
 
-install-deps    Install the dependencies required to run $(basename "$0")
-new APPNAME     Create a new app and populate it with a DOTFILE
+install-deps          Install the dependencies required to run $(basename "$0")
+deploy       APPNAME  Deploy an app
+new          APPNAME  Create a new app and populate it with a DOTFILE
+dconf-dump   APPNAME  Dump the dconf of an app to its app dir (basically the reverse of dconf_load_all())
 EOF
   exit
 }
@@ -69,10 +71,10 @@ parse_params() {
     --no-color)
       NO_COLOR=1
       ;;
-    --test)
+    -t|--test)
       TEST=1
       ;;
-    --skip-pkg-install)
+    -S|--skip-pkg-install)
       SKIP_DEPS_INSTALL=1
       ;;
     -?*)
