@@ -189,7 +189,7 @@ create_new_app () {
   appfile="$appdir/DOTAPP"
   apphome="$appdir/apphome"
 
-  [ -d "$appdir" ] && rm -rf "$appdir"; mkdir "$appdir"
+  [ -d "$appdir" ] || mkdir "$appdir"
   [ -d "$apphome" ] && rm -rf "$apphome"; mkdir "$apphome"
   cp $DOTAPP_SAMPLE $appfile
 
@@ -251,11 +251,11 @@ install_dotapp_pkg_depends () {
 stow_app () {
   [ ! -d "$appdir/apphome" ] && debug "Skipping stow, app has no apphome dir..." && return
 
-  debug "Stowing $appdir/apphome..."
+  notify_msg "Stowing config files..."
 
   set +e
   result=$(stow --orig -t "${HOME}" -d ${appdir} apphome 2>&1)
-  [ "$?" -ne 0 ] && "${RED}[-] Stow failed:\n${result}${NOCOLOR}"
+  [ "$?" -ne 0 ] && err_msg "Stow failed:\n${result}"
   set -e
 }
 
@@ -342,7 +342,6 @@ dconf_dump_apps () {
     done
   fi
 }
-
 
 ########################
 # MAIN ACTION LOOP
