@@ -1,0 +1,14 @@
+# should be the same as dir name
+appname="tmux"
+# Organization and grouping
+tag=(cli)
+# yay packages required for this app
+pkg_depends=(tmux)
+
+# Commands run after package installs
+stow_post () {
+    notify_msg "Installing TPM (tmux package manager)..."
+    git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+    notify_msg "Installing TPM plugins..."
+    ~/.tmux/plugins/tpm/scripts/install_plugins.sh
+}

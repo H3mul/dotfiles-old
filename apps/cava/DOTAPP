@@ -1,0 +1,6 @@
+# should be the same as dir name
+appname="cava"
+# Organization and grouping
+tag=(cli)
+# yay packages required for this app
+pkg_depends=(cava)

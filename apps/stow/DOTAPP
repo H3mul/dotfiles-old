@@ -1,7 +1,7 @@
 # should be the same as dir name
 appname="stow"
 # Organization and grouping
-tag=()
+tag=(cli)
 # yay packages required for this app
 pkg_depends=(base-devel)
 

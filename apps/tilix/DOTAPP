@@ -1,0 +1,10 @@
+# should be the same as dir name
+appname="tilix"
+# Organization and grouping
+tag=(gui)
+# yay packages required for this app
+pkg_depends=(tilix)
+# Pass all the path, file tuples to `dconf_load`
+dconf_load_all () {
+    dconf_load /com/gexperts/Tilix/ tilix.dconf
+}
