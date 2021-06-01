@@ -145,6 +145,7 @@ install_deps () {
     msg "  Looks like this is not Arch (pacman is missing)."
     msg "  Please install the following packages manually:\n"
     msg "  ${YELLOW}$(cat "$DEPS_FILE" | tr '\n' ' ' | sed 's/ $/\n/')${NOCOLOR}"
+    die
   else
     cat "$DEPS_FILE" | xargs sudo pacman -S --noconfirm --needed \
       || die "${RED}Failed to install dependencies${NOCOLOR}"
@@ -253,7 +254,7 @@ stow_app () {
   debug "Stowing $appdir/apphome..."
 
   set +e
-  result=$(stow -R -t "${HOME}" -d ${appdir} apphome 2>&1)
+  result=$(stow --orig -t "${HOME}" -d ${appdir} apphome 2>&1)
   [ "$?" -ne 0 ] && "${RED}[-] Stow failed:\n${result}${NOCOLOR}"
   set -e
 }
