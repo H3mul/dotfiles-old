@@ -138,8 +138,8 @@ install_deps () {
   notify_msg "Installing dependencies ..."
   msg
 
-  [ ! -f "$DEPS_FILE" ] && die "${RED}$DEPS_FILE doesnt exist.${NOCOLOR}"
-  [ ! -s "$DEPS_FILE" ] && die ${RED}"$DEPS_FILE is empty.${NOCOLOR}"
+  [ ! -f "$DEPS_FILE" ] && die "$DEPS_FILE doesnt exist."
+  [ ! -s "$DEPS_FILE" ] && die "$DEPS_FILE is empty."
 
   if ! command -v pacman &> /dev/null; then
     msg "  Looks like this is not Arch (pacman is missing)."
@@ -148,7 +148,9 @@ install_deps () {
     die
   else
     cat "$DEPS_FILE" | xargs sudo pacman -S --noconfirm --needed \
-      || die "${RED}Failed to install dependencies${NOCOLOR}"
+      || die "Failed to install dependencies"
+
+    deploy_apps yay stow
   fi
 }
 
