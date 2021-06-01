@@ -11,5 +11,6 @@ install_post () {
    home=$(pwd)
    cd $(mktemp -d) && \
       git clone https://aur.archlinux.org/yay.git && \
-      cd yay && makepkg -si --noconfirm --needed && cd .. && rm -rf yay && cd $home
+      cd yay && makepkg -si --noconfirm --needed
+   cd .. && rm -rf yay && cd $home
 }

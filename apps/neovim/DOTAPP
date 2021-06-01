@@ -3,7 +3,7 @@ appname="neovim"
 # Organization and grouping
 tag=(cli)
 # yay packages required for this app
-pkg_depends=(neovim fzf rg)
+pkg_depends=(neovim fzf ripgrep)
 
 # Commands to run after stow install but before dconf
 stow_post () {

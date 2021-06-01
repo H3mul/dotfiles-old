@@ -28,7 +28,7 @@ install_post () {
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
     # Hack to get rid of stow conflict
-    rm ~/.zshrc
+    # rm ~/.zshrc
 
     notify_msg "Installing oh-my-zsh plugins..." 
 

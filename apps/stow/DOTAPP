@@ -1,0 +1,14 @@
+# should be the same as dir name
+appname="stow"
+# Organization and grouping
+tag=()
+# yay packages required for this app
+pkg_depends=(base-devel)
+
+install_post () {
+   home=$(pwd)
+   cd $(mktemp -d) && \
+      wget https://raw.githubusercontent.com/H3mul/stow/dev/PKGBUILD && \
+      makepkg -si --needed --noconfirm
+   cd $home
+}
