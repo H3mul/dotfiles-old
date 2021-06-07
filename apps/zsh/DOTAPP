@@ -1,7 +1,7 @@
 # should be the same as dir name
 appname="zsh"
 # Organization and grouping
-tag=(cli)
+tags=(cli)
 # yay packages required for this app
 pkg_depends=(zsh fd fzf)
 

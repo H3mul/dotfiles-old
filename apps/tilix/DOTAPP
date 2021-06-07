@@ -1,7 +1,7 @@
 # should be the same as dir name
 appname="tilix"
 # Organization and grouping
-tag=(gui)
+tags=(gui)
 # yay packages required for this app
 pkg_depends=(tilix)
 # Pass all the path, file tuples to `dconf_load`

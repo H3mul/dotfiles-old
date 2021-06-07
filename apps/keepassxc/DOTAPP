@@ -1,6 +1,6 @@
 # should be the same as dir name
 appname="keepassxc"
 # Organization and grouping
-tag=(misc)
+tags=(misc)
 # yay packages required for this app
 pkg_depends=(keepassxc)

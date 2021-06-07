@@ -1,7 +1,7 @@
 # should be the same as dir name
 appname="app1"
 # Organization and grouping
-tag=()
+tags=()
 # yay packages required for this app
 pkg_depends=()
 

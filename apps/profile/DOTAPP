@@ -1,4 +1,4 @@
 # should be the same as dir name
 appname="profile"
 # Organization and grouping
-tag=(cli)
+tags=(cli)

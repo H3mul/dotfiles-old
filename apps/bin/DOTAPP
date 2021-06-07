@@ -1,4 +1,4 @@
 # should be the same as dir name
 appname="bin"
 # Organization and grouping
-tag=(cli)
+tags=(cli)

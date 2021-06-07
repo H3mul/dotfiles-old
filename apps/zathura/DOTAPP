@@ -1,6 +1,6 @@
 # should be the same as dir name
 appname="zathura"
 # Organization and grouping
-tag=(gui)
+tags=(gui)
 # yay packages required for this app
 pkg_depends=(zathura)
