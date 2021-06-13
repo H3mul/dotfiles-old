@@ -5,10 +5,15 @@ tags=(cli)
 # yay packages required for this app
 pkg_depends=(neovim fzf ripgrep)
 
+NVIM_HOME="$HOME/.config/nvim"
+
+pre () {
+   # Create the paths so stow doesnt symlink them
+   [ -d "$NVIM_HOME" ] || mkdir -p $HOME/.config/nvim
+}
+
 # Commands to run after stow install but before dconf
 stow_post () {
-    NVIM_HOME="$HOME/.config/nvim"
-
     [ -d "$NVIM_HOME/autoload/plug.vim" ] && sub_msg "vim Plug already installed, skipping..." && return
     sub_msg "Installing vim plug..."
     curl -fLo $NVIM_HOME/autoload/plug.vim --create-dirs \
