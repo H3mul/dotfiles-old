@@ -7,8 +7,11 @@ pkg_depends=(tmux)
 
 # Commands run after package installs
 stow_post () {
-    notify_msg "Installing TPM (tmux package manager)..."
+    local tmux_home="$HOME/.tmux/plugins/tpm"
+    [ -d "$tmux_home" ] && sub_msg "TMP already installed, skipping..." && return
+
+    sub_msg "Installing TPM (tmux package manager)..."
     git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
-    notify_msg "Installing TPM plugins..."
+    sub_msg "Installing TPM plugins..."
     ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 }

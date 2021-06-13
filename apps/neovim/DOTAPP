@@ -9,11 +9,11 @@ pkg_depends=(neovim fzf ripgrep)
 stow_post () {
     NVIM_HOME="$HOME/.config/nvim"
 
-    [ -d "$NVIM_HOME/autoload/plug.vim" ] && notify_msg "vim Plug already installed, skipping..." && return
-    notify_msg "Installing vim plug..."
+    [ -d "$NVIM_HOME/autoload/plug.vim" ] && sub_msg "vim Plug already installed, skipping..." && return
+    sub_msg "Installing vim plug..."
     curl -fLo $NVIM_HOME/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    notify_msg "Installing vim plugins..."
+    sub_msg "Installing vim plugins..."
     nvim +PlugInstall +qall
     unset NVIM_HOME
 }

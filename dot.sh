@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -Eeuo pipefail
+set -Eu
 
 cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1
 
@@ -12,7 +12,7 @@ trap cleanup SIGINT SIGTERM ERR EXIT
 
 usage() {
   cat <<EOF
-Usage: $(basename "$0") COMMAND [global opts] 
+Usage: $(basename "$0") COMMAND [global opts]
 
 Symlink dotfiles, install packages, load dconf, run custom commands and
 otherwise deploy your setup to a new linux box.
@@ -64,9 +64,15 @@ parse_params() {
     -h | --help)
       usage
       ;;
-    -v* | --verbose)
+    -v | --verbose)
       DEBUG=1
-      [[ "${1-}" == "-vv" ]] && set -x
+      ;;
+    -vv)
+      DEBUG=2
+      ;;
+    -vvv)
+      DEBUG=3
+      set -x
       ;;
     --no-color)
       NO_COLOR=1
@@ -100,8 +106,9 @@ parse_params() {
 parse_params "$@"
 
 debug () {
-  if [ "$DEBUG" -eq 1 ]; then
-    msg "${GRAY}# ${*-}${NOCOLOR}"
+  level=${2:-1}
+  if [ "$DEBUG" -ge "$level" ]; then
+    msg "${GRAY}# ${1-}${NOCOLOR}"
   fi
 }
 
@@ -117,6 +124,10 @@ err_msg () {
   msg "${RED}[-] ${*-}${NOCOLOR}"
 }
 
+sub_msg () {
+  msg "${BLUE}    ==> ${NOCOLOR}${*-}"
+}
+
 msg () {
   echo >&2 -e "${1-}"
 }
@@ -128,6 +139,12 @@ die () {
   exit "$code"
 }
 
+contains_element () {
+  local e match="$1"
+  shift
+  for e; do [[ "$e" == "$match" ]] && return 0; done
+  return 1
+}
 
 ########################
 # INSTALL DEPENDENCIES
@@ -170,7 +187,7 @@ set_dotapp_file_var () {
   varname="${2-}"
   varval="${3-}"
   vartype="${4-string}"
-  
+
   # Format value based on type
   case $vartype in
     string)
@@ -235,36 +252,42 @@ dotapp_method () {
   $method || die "Failed running $method."
 }
 
-# Install pkg_depends from DOTAPP
-install_dotapp_pkg_depends () {
-  if [ "${#pkg_depends[@]}" -ne 0 ]; then
-    [ "$SKIP_DEPS_INSTALL" -eq 1 ] && debug "Skipping dependency install" && return
+dotapp_method_all () {
+  method="${1-}"
+  shift
+  appdirs="$@"
 
-    ! command -v yay &> /dev/null && \
-      warn_msg "yay is not found. Deploy it first, or install the following packages manually and run again with --skip-pkg-install.\n" && \
-      msg "${YELLOW}${pkg_depends[*]}${NOCOLOR}" && \
-      return
+  for appdir in "${appdirs[@]}"; do
+    load_app_vars "$appdir"
+    dotapp_method "$method"
+  done
+}
 
-    debug "Installing apps: ${pkg_depends[@]}"
-    yay -S --noconfirm --needed "${pkg_depends[@]}"
-  fi
+install_packages () {
+  local packages="$@"
+  # [ "${#packages[@]}" -eq 0 ] && return
+  [ "$SKIP_DEPS_INSTALL" -eq 1 ] && debug "Skipping dependency install" && return
+
+  ! command -v yay &> /dev/null && \
+    warn_msg "yay is not found. Deploy it first, or install the following packages manually and run again with --skip-pkg-install.\n" && \
+    msg "${YELLOW}${packages[*]}${NOCOLOR}" && \
+    return
+
+  debug "Installing apps: ${packages[@]}"
+  yay -S --noconfirm --needed ${packages[@]} || die "Aborting due to errors while installing packages."
 }
 
 stow_app () {
   [ ! -d "$appdir/apphome" ] && debug "Skipping stow, app has no apphome dir..." && return
 
-  notify_msg "Stowing config files..."
-
-  set +e
   result=$(stow --orig -t "${HOME}" -d ${appdir} apphome 2>&1)
   [ "$?" -ne 0 ] && err_msg "Stow failed:\n${result}"
-  set -e
 }
 
 dconf_load () {
   path=${1:-}
   dumpfilename=${2:-}
-  dumpfile="$appdconf/$dumpfilename" 
+  dumpfile="$appdconf/$dumpfilename"
   dump=$DCONF_DUMP
 
   debug "dconf_load dump:$dump path:$path dumpfile:$dumpfile"
@@ -277,34 +300,32 @@ dconf_load () {
   fi
 }
 
-deploy_app () {
-  appname="${1-}"
-  appdir="$APPS_DIR/$appname"
-  appfile="$appdir/DOTAPP"
-  apphome="$appdir/apphome"
-  appdconf="$appdir/dconf"
+# Set all vars associated with an app
+load_app_vars () {
+  appdir="${1-}"
+  appfile="${appdir}DOTAPP"
+  apphome="${appdir}apphome"
+  appdconf="${appdir}dconf"
 
-  notify_msg "Deploying $appname"
-  ensure_app_exists
+  [ ! -f "$appfile" ] && return 1
 
-  # Load DOTAPP vars
-  debug "Sourcing $appfile"
   load_blank_dotapp_vars
-  source "$appfile" || die "Failed to source '$appname' DOTAPP file."
+  source "$appfile" || die "Failed to source '$appfile' DOTAPP file."
+}
 
-  # Deploy process:
-  # 1. run pre()
-  dotapp_method "pre"
+# Deploys an app currently set up ( see load_app_vars() )
+deploy_app () {
+  appdir="${1:-}"
+  notify_msg "Deploying $appname"
 
-  # 2. install dependency packages
-  install_dotapp_pkg_depends
+  load_app_vars "$appdir"
 
   # 3. run install_post()
   dotapp_method "install_post"
 
   # 4. stow config
   stow_app
-  
+
   # 5. run stow_post()
   dotapp_method "stow_post"
 
@@ -315,12 +336,39 @@ deploy_app () {
   dotapp_method "post"
 }
 
+gather_matching_apps () {
+  local targets=("$@")
+  local search_vals=($appname "${tags[@]}" "all")
+  for val in "${search_vals[@]}"; do
+    contains_element "$val" "${targets[@]}"
+    if [ "$?" -eq 0 ]; then
+      all_appdirs=("${all_appdirs[@]}" $appdir)
+      all_pkg_depends=("${all_pkg_depends[@]}" "${pkg_depends[@]}")
+    fi
+  done
+}
+
 deploy_apps () {
-  if [ ${#@} -ne 0 ]; then
-    for app in $@; do
-      deploy_app "$app"
-    done
-  fi
+  [ ${#@} -eq 0 ] && return
+
+  local targets=("$@")
+  all_appdirs=()
+  all_pkg_depends=()
+
+  map_apps_list "gather_matching_apps" "${targets[@]}"
+
+  [ ${#all_appdirs[@]} -eq 0 ] && die "No matching apps found."
+
+  # Run the pre method of all apps
+  dotapp_method_all "pre" "${all_appdirs[@]}"
+
+  # Install all the collected dependencies at once
+  install_packages "${all_pkg_depends[@]}"
+
+  # Proceed to install each app individually
+  for appdir in "${all_appdirs[@]}"; do
+    deploy_app $appdir
+  done
 }
 
 
@@ -345,6 +393,53 @@ dconf_dump_apps () {
   fi
 }
 
+
+########################
+# COLLECT APP INFO
+
+# Print general info about the app in one line
+# Needs the app vars to be loaded (eg, use in map_apps_list()
+print_app () {
+  app_string="$appname"
+
+  if [ "${#tags[@]}" -ne 0 ]; then
+    printf -v tags_string '%s,' "${tags[@]}"
+    tags_string="${tags_string%,}"
+    app_string=$(printf "%-*s ${YELLOW}[ %s ]${NOCOLOR}\n" 15 $app_string $tags_string)
+  fi
+
+  msg "$app_string"
+}
+
+# Simluates a "map" action. Pass a function to call on every valid app with app
+# vars loaded. If the function returns a -1, we stop loop execution.
+map_apps_list () {
+  func="${1:-}"
+  [ -z "$func" ] && return
+  shift
+
+  for dir in $APPS_DIR/*/; do
+    load_app_vars $dir
+
+    if [ "$?" -eq 1 ]; then
+      debug "Skipping $dir, not a valid app..." 2
+      continue
+    fi
+
+    # If the function returns a -1, we stop loop execution.
+    $func "$@"
+    [ "$?" -eq -1 ] && break
+
+  done
+}
+
+# Print a list of apps
+print_apps () {
+  notify_msg "Available apps:"
+  map_apps_list "print_app"
+}
+
+
 ########################
 # MAIN ACTION LOOP
 
@@ -353,13 +448,16 @@ case "$COMMAND" in
     install_deps
     ;;
   new)
-    create_new_apps ${PARAMS[@]} 
+    create_new_apps ${PARAMS[@]}
+    ;;
+  list)
+    print_apps
     ;;
   deploy)
-    deploy_apps ${PARAMS[@]} 
+    deploy_apps ${PARAMS[@]}
     ;;
   dconf-dump)
-    dconf_dump_apps ${PARAMS[@]} 
+    dconf_dump_apps ${PARAMS[@]}
     ;;
   *)
     usage

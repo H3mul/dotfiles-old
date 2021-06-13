@@ -15,22 +15,22 @@ zsh_plugin () {
     plugin_home="$zsh_plugin_home/$plugin"
 
     if [ ! -d  "$plugin_home" ]; then
-        notify_msg "installing $plugin for omz..."
+        sub_msg "installing $plugin for omz..."
         git clone "https://github.com/$plugin_path" "$plugin_home"
     fi
 }
 
 # Commands run after package installs
 install_post () {
-    [ -d "$HOME/.oh-my-zsh" ] && notify_msg "oh-my-zsh already installed, skipping..." && return
+    [ -d "$HOME/.oh-my-zsh" ] && sub_msg "oh-my-zsh already installed, skipping..." && return
 
-    notify_msg "Installing oh-my-zsh..." 
+    sub_msg "Installing oh-my-zsh..."
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
     # Hack to get rid of stow conflict
     # rm ~/.zshrc
 
-    notify_msg "Installing oh-my-zsh plugins..." 
+    sub_msg "Installing oh-my-zsh plugins..."
 
     zsh_plugin_home=${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/
     zsh_plugin 'wfxr/forgit'
@@ -39,7 +39,7 @@ install_post () {
     zsh_plugin 'Aloxaf/fzf-tab'
     unset zsh_plugin
 
-    notify_msg "Prompting to change your shell to ZSH..."
+    sub_msg "Prompting to change your shell to ZSH..."
 
-    chsh -s $(which zsh) || msg "${GREEN}Proceeding${NOCOLOR}"
+    sudo chsh -s $(which zsh) $(whoami)
 }

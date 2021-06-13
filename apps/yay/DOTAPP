@@ -1,5 +1,5 @@
 appname="yay"
-tags=(core cli)
+tags=(core)
 
 # This HAS to be empty:
 # Installing pkg_depends requires yay, so having depends to install would create a circular
