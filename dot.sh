@@ -316,9 +316,9 @@ load_app_vars () {
 # Deploys an app currently set up ( see load_app_vars() )
 deploy_app () {
   appdir="${1:-}"
-  notify_msg "Deploying $appname"
-
   load_app_vars "$appdir"
+
+  notify_msg "Deploying $appname"
 
   # 3. run install_post()
   dotapp_method "install_post"
@@ -337,10 +337,20 @@ deploy_app () {
 }
 
 gather_matching_apps () {
-  local targets=("$@")
+  local targets=(${1:-})
+  local exclusions=(${2:-})
+  # Add the fake "all" tag to search vals for the "all" target to grab all apps
   local search_vals=($appname "${tags[@]}" "all")
-  for val in "${search_vals[@]}"; do
-    contains_element "$val" "${targets[@]}"
+
+  for exclusion in "${exclusions[@]}"; do
+    contains_element "$exclusion" "${search_vals[@]}"
+    # Matches an exclusion tag, skip this app
+    [ "$?" -eq 0 ] && return
+  done
+
+  for target in "${targets[@]}"; do
+    contains_element "$target" "${search_vals[@]}"
+    # Matches a target tag, add the app
     if [ "$?" -eq 0 ]; then
       all_appdirs=("${all_appdirs[@]}" $appdir)
       all_pkg_depends=("${all_pkg_depends[@]}" "${pkg_depends[@]}")
@@ -349,13 +359,25 @@ gather_matching_apps () {
 }
 
 deploy_apps () {
-  [ ${#@} -eq 0 ] && return
+  local selection=("$@")
+  local targets=()
+  local exclusions=()
 
-  local targets=("$@")
+  for sel in "${selection[@]}"; do
+    if [[ $sel == ^* ]]; then
+      exclusions=("${exclusions[@]}" ${sel:1})
+    else
+      targets=("${targets[@]}" $sel)
+    fi
+  done
+
+  # If the targets are empty, but we have exclusions, make the target "all"
+  [ ${#targets[@]} -eq 0 ] && [ ${#exclusions[@]} -gt 0 ] && targets=("all")
+
   all_appdirs=()
   all_pkg_depends=()
 
-  map_apps_list "gather_matching_apps" "${targets[@]}"
+  map_apps_list "gather_matching_apps" "${targets[*]}" "${exclusions[*]}"
 
   [ ${#all_appdirs[@]} -eq 0 ] && die "No matching apps found."
 
@@ -376,21 +398,14 @@ deploy_apps () {
 # DUMP AN APP
 
 dconf_dump_app () {
-  appname="${1-}"
-  appdir="$APPS_DIR/$appname"
-  dconfdir="$appdir/dconf"
-
-  [ -d $dconfdir ] && rm -rf $dconfdir
+  [ -d $appdconf ] && rm -rf $dconfdir
   dotapp_method "dconf_load_all"
 }
 
 dconf_dump_apps () {
   DCONF_DUMP=1
-  if [ ${#@} -ne 0 ]; then
-    for app in $@; do
-      dconf_dump_app "$app"
-    done
-  fi
+  map_apps_list "dconf_dump_app"
+  DCONF_DUMP=0
 }
 
 
