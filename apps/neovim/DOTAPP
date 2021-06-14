@@ -9,7 +9,7 @@ NVIM_HOME="$HOME/.config/nvim"
 
 pre () {
    # Create the paths so stow doesnt symlink them
-   [ -d "$NVIM_HOME" ] || mkdir -p $HOME/.config/nvim
+   [ -d "$NVIM_HOME" ] || mkdir -p $NVIM_HOME
 }
 
 # Commands to run after stow install but before dconf

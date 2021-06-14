@@ -30,7 +30,7 @@ plugins=(
   # z
   zsh-syntax-highlighting
   vi-mode
-  # forgit
+  forgit
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -149,6 +149,8 @@ export FZF_ALT_C_COMMAND='fd --type d --hidden --follow -E .git --no-ignore-vcs'
 export ZETTEL_HOME="$HOME/zettelkasten/zettels"
 
 export DISABLE_AUTO_TITLE='true'
+
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#434C5E"
 
 # Load completion modules
 autoload -Uz compinit

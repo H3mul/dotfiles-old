@@ -1,0 +1,6 @@
+appname="misc-packages"
+pkg_depends=(
+    "epy"
+    "duf"
+    "ncdu"
+)

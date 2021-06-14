@@ -106,9 +106,9 @@ parse_params() {
 parse_params "$@"
 
 debug () {
-  level=${2:-1}
+  level="${2:-1}"
   if [ "$DEBUG" -ge "$level" ]; then
-    msg "${GRAY}# ${1-}${NOCOLOR}"
+    msg "${GRAY}# ${1:-}${NOCOLOR}"
   fi
 }
 
@@ -253,9 +253,9 @@ dotapp_method () {
 }
 
 dotapp_method_all () {
-  method="${1-}"
+  method="${1:-}"
   shift
-  appdirs="$@"
+  appdirs=("$@")
 
   for appdir in "${appdirs[@]}"; do
     load_app_vars "$appdir"
@@ -264,8 +264,8 @@ dotapp_method_all () {
 }
 
 install_packages () {
-  local packages="$@"
-  # [ "${#packages[@]}" -eq 0 ] && return
+  local packages=("$@")
+  [ ${#packages[@]} -eq 0 ] && return
   [ "$SKIP_DEPS_INSTALL" -eq 1 ] && debug "Skipping dependency install" && return
 
   ! command -v yay &> /dev/null && \
@@ -273,7 +273,7 @@ install_packages () {
     msg "${YELLOW}${packages[*]}${NOCOLOR}" && \
     return
 
-  debug "Installing apps: ${packages[@]}"
+  debug "Installing apps: ${packages[*]}"
   yay -S --noconfirm --needed ${packages[@]} || die "Aborting due to errors while installing packages."
 }
 
@@ -383,6 +383,8 @@ deploy_apps () {
 
   # Run the pre method of all apps
   dotapp_method_all "pre" "${all_appdirs[@]}"
+
+  notify_msg "Installing prerequisite packages..."
 
   # Install all the collected dependencies at once
   install_packages "${all_pkg_depends[@]}"
