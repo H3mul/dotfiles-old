@@ -1,6 +1,6 @@
 # should be the same as dir name
 appname="cava"
 # Organization and grouping
-tags=(cli)
+tags=(misc)
 # yay packages required for this app
 pkg_depends=(cava)
