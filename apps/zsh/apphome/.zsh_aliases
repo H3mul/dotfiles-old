@@ -101,7 +101,7 @@ background () {
 alias tma="tmux attach"
 
 tm () {
-    [ command -v tmuxp >/dev/null ] || return
+    command -v tmuxp > /dev/null || return
     if [ -z "$1" ]; then
         tmuxp load -y . 2>/dev/null
 
